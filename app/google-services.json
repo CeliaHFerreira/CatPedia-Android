@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "677104464593",
+    "project_id": "catpedia-android",
+    "storage_bucket": "catpedia-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677104464593:android:ddbc0aa8d6fea6a9d10bf0",
+        "android_client_info": {
+          "package_name": "com.celia.catpedia_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677104464593-sdbkjafdvhrlgso8dn0ksvfitubebmgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlKZiaJQ99c9gk8qodVMfzxLo5XuOLFiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677104464593-sdbkjafdvhrlgso8dn0ksvfitubebmgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
