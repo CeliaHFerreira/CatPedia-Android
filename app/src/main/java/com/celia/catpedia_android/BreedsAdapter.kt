@@ -1,4 +1,4 @@
-package com.celia.catpedia_andrioid
+package com.celia.catpedia_android
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.celia.catpedia_android.R
 import com.celia.catpedia_android.models.Breed
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_breed.*
 
 class BreedsAdapter (private val breeds: List<Breed>) : RecyclerView.Adapter<BreedsAdapter.BreedsHolder>() {
 
@@ -32,6 +30,13 @@ class BreedsAdapter (private val breeds: List<Breed>) : RecyclerView.Adapter<Bre
         } else {
             holder.ivCat.setImageResource(R.drawable.cat)
         }
+
+        if (breed.favorite) {
+            holder.ivLike.setImageResource(R.drawable.ic_favorite)
+        } else {
+            holder.ivLike.setImageResource(R.drawable.ic_no_favorite)
+        }
+
     }
 
     class BreedsHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

@@ -34,6 +34,7 @@ data class Breed(
     @SerializedName("wikipedia_url") var wikipediaUrl : String?,
     @SerializedName("hypoallergenic") var hypoallergenic : Int,
     @SerializedName("reference_image_id") var referenceImageId : String,
-    @SerializedName("image") var image : Image?
+    @SerializedName("image") var image : Image?,
+    var favorite: Boolean = false
 
 )
