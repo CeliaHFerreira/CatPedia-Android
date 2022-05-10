@@ -10,4 +10,7 @@
     <string name="cat_app">Cat_app</string>
     <string name="breed">breed</string>
     <string name="like_empty">like_empty</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favoritos</string>
+    <string name="profile">Perfil</string>
 </resources>
