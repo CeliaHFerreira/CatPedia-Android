@@ -7,16 +7,25 @@
     tools:context=".HomeActivity"
     android:background="@color/grey_ligth">
 
-    <TextView
-        android:id="@+id/textViewHello"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svBreeds"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:text="Hola! Has iniciado sesión"
-        android:textColor="@color/grey_dark_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBreeds"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/svBreeds"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <Button
         android:id="@+id/logOutButton"
@@ -28,5 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/button_rounded"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,10 +13,11 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="42dp"
+        android:contentDescription="@string/cat_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/cat" />
+        app:srcCompat="@drawable/cat" />
 
     <EditText
         android:id="@+id/emailET"
@@ -27,10 +28,13 @@
         android:layout_marginEnd="62dp"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        android:drawableStart="@drawable/ic_baseline_user_24"
+        android:drawablePadding="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/passwordET"
@@ -41,10 +45,13 @@
         android:layout_marginEnd="62dp"
         android:ems="10"
         android:hint="@string/password"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="8dp"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailET"/>
+        app:layout_constraintTop_toBottomOf="@+id/emailET"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/enrollmentButton"
