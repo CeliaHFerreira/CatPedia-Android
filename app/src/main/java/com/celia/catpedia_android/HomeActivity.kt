@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.celia.catpedia_andrioid.BreedsAdapter
 import com.celia.catpedia_android.databinding.ActivityHomeBinding
 import com.celia.catpedia_android.models.Breed
 import com.google.firebase.auth.FirebaseAuth
@@ -17,10 +18,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
 
     private lateinit var adapter: BreedsAdapter
-    private val breedImages = mutableListOf<String>()
+    private val breedList = mutableListOf<Breed>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +40,6 @@ class HomeActivity : AppCompatActivity() {
         preferences.putString("email", email)
         preferences.apply()
 
-        initRecyclerView()
         getBreeds()
     }
 
@@ -65,8 +66,6 @@ class HomeActivity : AppCompatActivity() {
                 .execute()
             val breeds = call.body()
             runOnUiThread {
-
-                print(breeds)
                 if (call.isSuccessful) {
                     breeds?.let { showBreeds(it) }
                 } else {
@@ -77,17 +76,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showBreeds(breeds: List<Breed>) {
-        val listImages: MutableList<String> = mutableListOf()
-        breeds.forEach {
-            listImages.add(it.image?.url)
-        }
-        breedImages.clear()
-        breedImages.addAll(listImages)
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun initRecyclerView() {
-        adapter = BreedsAdapter(breedImages)
+        breedList.clear()
+        breedList.addAll(breeds)
+        adapter = BreedsAdapter(breedList)
+        binding.rvBreeds.setHasFixedSize(true)
         binding.rvBreeds.layoutManager = LinearLayoutManager(this)
         binding.rvBreeds.adapter = adapter
     }

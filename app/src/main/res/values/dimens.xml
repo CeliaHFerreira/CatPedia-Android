@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_62">62dp</dimen>
+    <dimen name="margin_42">42dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="image_view_principal">120dp</dimen>
+    <dimen name="corner_6">6dp</dimen>
+    <dimen name="item_height">300dp</dimen>
+    <dimen name="item_view_height">250dp</dimen>
+    <dimen name="item_text_height">80dp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+</resources>

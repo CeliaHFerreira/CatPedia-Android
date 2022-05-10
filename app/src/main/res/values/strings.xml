@@ -8,4 +8,6 @@
     <string name="prefs_file">com.celia.catpedia_android.PREFERENCE_FILE_KEY</string>
     <string name="sign_in_with_google">Login con google</string>
     <string name="cat_app">Cat_app</string>
+    <string name="breed">breed</string>
+    <string name="like_empty">like_empty</string>
 </resources>

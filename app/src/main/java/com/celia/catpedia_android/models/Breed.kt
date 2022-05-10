@@ -12,8 +12,6 @@ data class Breed(
     @SerializedName("description") var description : String,
     @SerializedName("life_span") var lifeSpan : String,
     @SerializedName("indoor") var indoor : Int,
-    @SerializedName("lap") var lap : Int,
-    @SerializedName("alt_names") var altNames : String,
     @SerializedName("adaptability") var adaptability : Int,
     @SerializedName("affection_level") var affectionLevel : Int,
     @SerializedName("child_friendly") var childFriendly : Int,
@@ -33,9 +31,9 @@ data class Breed(
     @SerializedName("rex") var rex : Int,
     @SerializedName("suppressed_tail") var suppressedTail : Int,
     @SerializedName("short_legs") var shortLegs : Int,
-    @SerializedName("wikipedia_url") var wikipediaUrl : String,
+    @SerializedName("wikipedia_url") var wikipediaUrl : String?,
     @SerializedName("hypoallergenic") var hypoallergenic : Int,
     @SerializedName("reference_image_id") var referenceImageId : String,
-    @SerializedName("image") var image : Image
+    @SerializedName("image") var image : Image?
 
 )
