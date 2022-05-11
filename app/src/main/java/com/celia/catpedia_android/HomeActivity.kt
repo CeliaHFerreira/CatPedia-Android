@@ -48,9 +48,6 @@ class HomeActivity : AppCompatActivity() {
         val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         preferences.putString("email", email)
         preferences.apply()
-
-        //getBreeds()
-
     }
 
     private fun setup() {
@@ -76,39 +73,6 @@ class HomeActivity : AppCompatActivity() {
         ft.commit()
 
     }
-
-
-    /*private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://api.thecatapi.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }*/
-
-    /* private fun getBreeds() {
-         CoroutineScope(Dispatchers.IO).launch {
-             val call = getRetrofit().create(APIService::class.java)
-                 .getCatsBreeds("v1/breeds")
-                 .execute()
-             val breeds = call.body()
-             runOnUiThread {
-                 if (call.isSuccessful) {
-                     breeds?.let { showBreeds(it) }
-                 } else {
-                     showError()
-                 }
-             }
-         }
-     }*/
-
-    /*private fun showBreeds(breeds: List<Breed>) {
-        breedList.clear()
-        breedList.addAll(breeds)
-        adapter = BreedsAdapter(breedList)
-        binding.rvBreeds.setHasFixedSize(true)
-        binding.rvBreeds.layoutManager = LinearLayoutManager(this)
-        binding.rvBreeds.adapter = adapter
-    }*/
 
     private fun returnToLogin() {
         val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()

@@ -21,7 +21,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class BreedsFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeListBinding
-    private lateinit var adapter: BreedsAdapter
     private val breedList = mutableListOf<Breed>()
 
 
