@@ -14,14 +14,19 @@
 
         <ImageView
             android:id="@+id/ivCat"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_view_height"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:contentDescription="@string/breed"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintDimensionRatio="H, 4:3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_text_height"
             android:background="@drawable/card_description"

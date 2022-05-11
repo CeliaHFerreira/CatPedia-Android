@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.celia.catpedia_android.databinding.ActivityHomeBinding
 import com.celia.catpedia_android.fragments.BreedsFragment
 import com.celia.catpedia_android.fragments.FavoritesFragment
+import com.celia.catpedia_android.fragments.ProfileFragment
 import com.celia.catpedia_android.models.Breed
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
@@ -23,31 +25,67 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomeBinding
-
-    private lateinit var adapter: BreedsAdapter
-    private val breedList = mutableListOf<Breed>()
+    private lateinit var hBinding: ActivityHomeBinding
+    private lateinit var hActiveFragment: Fragment
+    private lateinit var hFragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        hBinding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(hBinding.root)
 
-        binding.navigation.setOnNavigationItemSelectedListener {
-            selectFragment(it)
-            true
-        }
-
-        binding.navigation.selectedItemId = R.id.navigation_home
+        selectFragment()
 
         val bundle = intent.extras
         val email = bundle?.getString("email")
 
         setup()
-
         val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         preferences.putString("email", email)
         preferences.apply()
+
+    }
+
+    private fun selectFragment() {
+
+        hFragmentManager = supportFragmentManager
+
+        val breedsFragment = BreedsFragment()
+        val favFragment = FavoritesFragment()
+        val profileFragment = ProfileFragment()
+
+        hActiveFragment = breedsFragment
+
+        hFragmentManager.beginTransaction()
+                .add(R.id.flContent, favFragment, FavoritesFragment::class.java.name)
+                .hide(favFragment).commit()
+        hFragmentManager.beginTransaction()
+                .add(R.id.flContent, profileFragment, ProfileFragment::class.java.name)
+                .hide(profileFragment).commit()
+        hFragmentManager.beginTransaction()
+                .add(R.id.flContent, breedsFragment, BreedsFragment::class.java.name)
+                .commit()
+
+        hBinding.navigation.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.navigation_home -> {
+                    hFragmentManager.beginTransaction().hide(hActiveFragment).show(breedsFragment).commit()
+                    hActiveFragment = breedsFragment
+                    true
+                }
+                R.id.navigation_favorite -> {
+                    hFragmentManager.beginTransaction().hide(hActiveFragment).show(favFragment).commit()
+                    hActiveFragment = favFragment
+                    true
+                }
+                R.id.navigation_profile -> {
+                    hFragmentManager.beginTransaction().hide(hActiveFragment).show(profileFragment).commit()
+                    hActiveFragment = profileFragment
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setup() {
@@ -58,22 +96,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun selectFragment(it: MenuItem) {
-
-        val fragmentClicked: Fragment
-
-        when (it.itemId) {
-            R.id.navigation_home -> fragmentClicked = BreedsFragment.newInstance()
-            else -> fragmentClicked = FavoritesFragment.newInstance()
-        }
-
-        val ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.homeContent, fragmentClicked)
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-        ft.commit()
-
-    }
-
     private fun returnToLogin() {
         val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         preferences.clear()
@@ -82,10 +104,4 @@ class HomeActivity : AppCompatActivity() {
         startActivity(loginIntent)
     }
 
-    public fun showError() {
-        Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT)
-            .show()
-    }
 }
-
-
