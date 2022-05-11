@@ -1,9 +1,10 @@
-package com.celia.catpedia_android
+package com.celia.catpedia_android.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.celia.catpedia_android.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_enrollment.*
 

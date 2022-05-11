@@ -2,8 +2,7 @@ package com.celia.catpedia_android.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Breed(
-
+data class Breed (
     @SerializedName("id") var id : String,
     @SerializedName("weight") var weight : Weight,
     @SerializedName("name") var name : String,

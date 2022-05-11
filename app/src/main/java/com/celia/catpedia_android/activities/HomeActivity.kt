@@ -1,27 +1,18 @@
-package com.celia.catpedia_android
+package com.celia.catpedia_android.activities
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.ActivityHomeBinding
 import com.celia.catpedia_android.fragments.BreedsFragment
 import com.celia.catpedia_android.fragments.FavoritesFragment
 import com.celia.catpedia_android.fragments.ProfileFragment
-import com.celia.catpedia_android.models.Breed
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeActivity : AppCompatActivity() {
 

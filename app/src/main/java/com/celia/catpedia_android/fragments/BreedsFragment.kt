@@ -1,23 +1,23 @@
 package com.celia.catpedia_android.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.celia.catpedia_android.APIService
-import com.celia.catpedia_android.BreedsAdapter
+import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.databinding.FragmentHomeListBinding
 import com.celia.catpedia_android.models.Breed
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlinx.coroutines.launch
+
 
 class BreedsFragment : Fragment() {
 
@@ -41,19 +41,16 @@ class BreedsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        GlobalScope.launch(Dispatchers.Main) {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             val breeds = getBreeds()
             breedList.addAll(breeds)
             binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
-            binding.rvBreeds.adapter = BreedsAdapter(breedList, this@BreedsFragment::onItemClickHandler)
+            binding.rvBreeds.adapter = BreedsAdapter(breedList) {
+
+            }
         }
     }
 
-    private fun onItemClickHandler(position:Int){
-        Log.d("***","${position}");
-    }
-
-    //Change to other file
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl("https://api.thecatapi.com/")
@@ -61,7 +58,6 @@ class BreedsFragment : Fragment() {
                 .build()
     }
 
-    //Change to other file
     private suspend fun getBreeds(): List<Breed> {
         val breeds: List<Breed>
         withContext(Dispatchers.IO) {

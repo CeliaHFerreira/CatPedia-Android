@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="com.celia.catpedia_android.EnrollmentActivity" />
-        <activity android:name="com.celia.catpedia_android.HomeActivity" />
-        <activity android:name="com.celia.catpedia_android.LoginActivity">
+        <activity android:name="com.celia.catpedia_android.activities.EnrollmentActivity" />
+        <activity android:name="com.celia.catpedia_android.activities.HomeActivity" />
+        <activity android:name="com.celia.catpedia_android.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
