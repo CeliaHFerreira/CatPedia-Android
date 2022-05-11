@@ -13,4 +13,16 @@
     <string name="home">Home</string>
     <string name="favorites">Favoritos</string>
     <string name="profile">Perfil</string>
+    <string name="description">Description</string>
+    <string name="characteristics">Characteristics</string>
+    <string name="vocalisation">Vocalisation</string>
+    <string name="strangers_friendly">Strangers Friendly</string>
+    <string name="social_needs">Social Needs</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="health_issues">Health Issues</string>
+    <string name="energy_level">Energy Level</string>
+    <string name="dog_friendly">Dog Friendly</string>
+    <string name="child_friendly">Child Friendly</string>
+    <string name="affection">Affection</string>
+    <string name="adaptability">Adaptability</string>
 </resources>
