@@ -21,6 +21,8 @@ import kotlinx.coroutines.launch
 
 class BreedsFragment : Fragment() {
 
+    private var shortAnimationDuration: Int = 0
+
     private lateinit var binding: FragmentBreedsBinding
     private val breedList = mutableListOf<Breed>()
 
@@ -37,14 +39,20 @@ class BreedsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBreedsBinding.inflate(inflater, container, false)
+        binding.svBreeds.visibility = View.GONE
+        binding.rvBreeds.visibility = View.GONE
+        shortAnimationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+        lifecycleScope.launch(Dispatchers.Main) {
             val breeds = getBreeds()
             breedList.addAll(breeds)
+            binding.svBreeds.visibility = View.VISIBLE
+            binding.rvBreeds.visibility = View.VISIBLE
+            binding.loadingSpinner.visibility = View.GONE
             binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
             binding.rvBreeds.adapter = BreedsAdapter(breedList)
         }
@@ -56,6 +64,7 @@ class BreedsFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
 
     private suspend fun getBreeds(): List<Breed> {
         val breeds: List<Breed>

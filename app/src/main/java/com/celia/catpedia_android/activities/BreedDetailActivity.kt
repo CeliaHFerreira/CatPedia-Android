@@ -21,17 +21,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class BreedDetailActivity : AppCompatActivity() {
 
+    private var shortAnimationDuration: Int = 0
+
     private val args: BreedDetailActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityBreedDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.scrollView2.visibility = View.GONE
+        shortAnimationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
         lifecycleScope.launch(Dispatchers.Main) {
 
             val breedDetail = getBreedDetail(args.breedId)
             val breed = breedDetail[0].breeds[0]
             selectImages(breedDetail)
             setDetailBreed(breed)
+            binding.scrollView2.visibility = View.VISIBLE
+            binding.loadingSpinnerDetail.visibility = View.GONE
         }
 
         goBackButton.setOnClickListener {
