@@ -46,9 +46,7 @@ class BreedsFragment : Fragment() {
             val breeds = getBreeds()
             breedList.addAll(breeds)
             binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
-            binding.rvBreeds.adapter = BreedsAdapter(breedList) {
-
-            }
+            binding.rvBreeds.adapter = BreedsAdapter(breedList)
         }
     }
 

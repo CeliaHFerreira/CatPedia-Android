@@ -7,6 +7,7 @@
     <dimen name="margin_6">6dp</dimen>
     <dimen name="padding_16">16dp</dimen>
     <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
     <dimen name="image_view_principal">120dp</dimen>
     <dimen name="corner_32">32dp</dimen>
     <dimen name="corner_12">12dp</dimen>
@@ -19,5 +20,5 @@
     <dimen name="text_20">20sp</dimen>
     <dimen name="text_18">18sp</dimen>
     <dimen name="text_14">14sp</dimen>
-    <dimen name="height_navigation_bar">60dp</dimen>
+    <dimen name="height_icon_navigation">28dp</dimen>
 </resources>

@@ -7,9 +7,9 @@
     <fragment
         android:id="@+id/breedsFragment"
         android:name="com.celia.catpedia_android.fragments.BreedsFragment"
-        android:label="fragment_breeds"
-        tools:layout="@layout/fragment_breeds" >
-        <argument
+        android:label="@string/home"
+        tools:layout="@layout/fragment_breeds">
+    <argument
             android:name="breedId"
             app:argType="string" />
         <action

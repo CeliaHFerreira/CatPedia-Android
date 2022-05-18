@@ -1,6 +1,8 @@
 package com.celia.catpedia_android.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -22,7 +24,6 @@ class BreedDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityBreedDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         lifecycleScope.launch(Dispatchers.Main) {
             val breed = getBreedDetail(args.breedId)[0].breeds[0]
 
@@ -31,6 +32,10 @@ class BreedDetailActivity : AppCompatActivity() {
             detail_temperament.text = breed.temperament
             detail_lifeSpan.text = breed.lifeSpan
             detail_description.text = breed.description
+        }
+
+        goBackButton.setOnClickListener {
+            returnToList(it)
         }
     }
 
@@ -53,6 +58,11 @@ class BreedDetailActivity : AppCompatActivity() {
             }
         }
         return breed
+    }
+
+    private fun returnToList(view: View) {
+        val homeIntent = Intent(this, HomeActivity::class.java)
+        startActivity(homeIntent)
     }
 
     //Change all

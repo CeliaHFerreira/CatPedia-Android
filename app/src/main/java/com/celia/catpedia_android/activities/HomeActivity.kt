@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         val ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.flContent, fragmentClicked)
+        ft.replace(R.id.nav_host_fragment_container, fragmentClicked)
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         ft.commit()
     }

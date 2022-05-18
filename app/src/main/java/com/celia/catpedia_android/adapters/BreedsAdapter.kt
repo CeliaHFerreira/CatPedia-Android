@@ -12,16 +12,14 @@ import com.celia.catpedia_android.models.Breed
 import com.squareup.picasso.Picasso
 
 
-private typealias BreedListener = (Breed) -> Unit
-
-class BreedsAdapter(private val breeds: MutableList<Breed>, private val listener: BreedListener) :
+class BreedsAdapter(private val breeds: MutableList<Breed>) :
     RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val breedsView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_breed, parent, false)
-        return ViewHolder(breedsView, listener)
+        return ViewHolder(breedsView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -30,7 +28,7 @@ class BreedsAdapter(private val breeds: MutableList<Breed>, private val listener
 
     override fun getItemCount(): Int = breeds.size
 
-    class ViewHolder(view: View, private val listener: BreedListener) :
+    class ViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
         private val binding = ItemBreedBinding.bind(view)
         fun bind(breed: Breed) {
@@ -60,7 +58,8 @@ class BreedsAdapter(private val breeds: MutableList<Breed>, private val listener
             breed: Breed,
             view: View
         ) {
-            val action = BreedsFragmentDirections.actionBreedsFragmentToBreedDetailActivity(breed.id)
+            val action =
+                BreedsFragmentDirections.actionBreedsFragmentToBreedDetailActivity(breed.id)
             view.findNavController().navigate(action)
         }
     }
