@@ -16,18 +16,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/goBackButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_16"
-                android:background="@drawable/button_rounded"
-                android:padding="@dimen/padding_4"
-                android:src="@drawable/ic_baseline_arrow_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
             <FrameLayout
                 android:id="@+id/detail_breed_header"
                 android:layout_width="match_parent"
@@ -37,7 +25,21 @@
                     android:id="@+id/breed_image_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_detail_height"
+                    android:overScrollMode="never"
                     android:contentDescription="@string/cat_breed" />
+
+                <ImageButton
+                    android:id="@+id/goBackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_4"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:background="@drawable/button_rounded"
+                    android:src="@drawable/ic_baseline_arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/returnToList" />
 
                 <TextView
                     android:id="@+id/detail_breed_title"

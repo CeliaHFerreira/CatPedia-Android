@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
 import com.celia.catpedia_android.APIService
+import com.celia.catpedia_android.adapters.ImageDetailAdapter
 import com.celia.catpedia_android.databinding.ActivityBreedDetailBinding
 import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.models.BreedDetail
@@ -29,8 +30,8 @@ class BreedDetailActivity : AppCompatActivity() {
 
             val breedDetail = getBreedDetail(args.breedId)
             val breed = breedDetail[0].breeds[0]
+            selectImages(breedDetail)
             setDetailBreed(breed)
-
         }
 
         goBackButton.setOnClickListener {
@@ -43,6 +44,15 @@ class BreedDetailActivity : AppCompatActivity() {
             .baseUrl("https://api.thecatapi.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    private fun selectImages(breedDetails: List<BreedDetail>) {
+        val images: MutableList<String> = arrayListOf()
+        breedDetails.forEach {
+            images.add(it.url)
+        }
+        val urls = ImageDetailAdapter(images)
+        breed_image_view_pager.adapter = urls
     }
 
     private suspend fun getBreedDetail(id: String): List<BreedDetail> {
