@@ -54,10 +54,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setup() {
         title = "Home page"
-        logOutButton.setOnClickListener {
+        /*logOutButton.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             returnToLogin()
-        }
+        }*/
     }
 
     private fun returnToLogin() {
