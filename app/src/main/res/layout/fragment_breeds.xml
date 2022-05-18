@@ -16,15 +16,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBreeds"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srBreeds"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svBreeds"
-        tools:listitem="@layout/item_breed" />
+        app:layout_constraintTop_toBottomOf="@+id/svBreeds">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBreeds"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/svBreeds"
+            tools:listitem="@layout/item_breed" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
         android:id="@+id/loadingSpinner"

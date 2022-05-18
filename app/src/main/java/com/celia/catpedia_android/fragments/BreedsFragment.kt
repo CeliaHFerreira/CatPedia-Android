@@ -8,10 +8,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.celia.catpedia_android.APIService
 import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
+import com.celia.catpedia_android.viewmodels.BreedListViewModel
+import kotlinx.android.synthetic.main.fragment_breeds.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -21,11 +24,11 @@ import kotlinx.coroutines.launch
 
 class BreedsFragment : Fragment() {
 
-    private var shortAnimationDuration: Int = 0
+    private var swipeRefreshLayout: SwipeRefreshLayout? = null
+    private lateinit var viewModel: BreedListViewModel
 
     private lateinit var binding: FragmentBreedsBinding
     private val breedList = mutableListOf<Breed>()
-
     companion object {
         fun newInstance(): BreedsFragment {
             return BreedsFragment()
@@ -40,21 +43,30 @@ class BreedsFragment : Fragment() {
     ): View? {
         binding = FragmentBreedsBinding.inflate(inflater, container, false)
         binding.svBreeds.visibility = View.GONE
-        binding.rvBreeds.visibility = View.GONE
-        shortAnimationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
+        binding.srBreeds.visibility = View.GONE
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        swipeRefreshLayout = srBreeds
+        swipeRefreshLayout?.setOnRefreshListener {
+            setData()
+        }
+        setData()
+    }
+
+    private fun setData() {
+        breedList.clear()
         lifecycleScope.launch(Dispatchers.Main) {
             val breeds = getBreeds()
             breedList.addAll(breeds)
             binding.svBreeds.visibility = View.VISIBLE
-            binding.rvBreeds.visibility = View.VISIBLE
+            binding.srBreeds.visibility = View.VISIBLE
             binding.loadingSpinner.visibility = View.GONE
             binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
             binding.rvBreeds.adapter = BreedsAdapter(breedList)
+            swipeRefreshLayout?.isRefreshing = false
         }
     }
 
