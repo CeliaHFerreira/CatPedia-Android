@@ -26,7 +26,8 @@ class HomeActivity : AppCompatActivity() {
 
         setup()
 
-        val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        val preferences =
+            getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         preferences.putString("email", email)
         preferences.apply()
 
@@ -60,7 +61,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun returnToLogin() {
-        val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        val preferences =
+            getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         preferences.clear()
         preferences.apply()
         val loginIntent = Intent(this, LoginActivity::class.java)

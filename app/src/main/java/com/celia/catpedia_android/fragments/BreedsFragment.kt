@@ -32,9 +32,9 @@ class BreedsFragment : Fragment() {
 
     //Control not call all the time this
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBreedsBinding.inflate(inflater, container, false)
         return binding.root
@@ -52,17 +52,17 @@ class BreedsFragment : Fragment() {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://api.thecatapi.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            .baseUrl("https://api.thecatapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     private suspend fun getBreeds(): List<Breed> {
         val breeds: List<Breed>
         withContext(Dispatchers.IO) {
             val call = getRetrofit().create(APIService::class.java)
-                    .getCatsBreeds("v1/breeds")
-                    .execute()
+                .getCatsBreeds("v1/breeds")
+                .execute()
             breeds = call.body()!!
             if (!call.isSuccessful) {
                 showError()
@@ -74,6 +74,6 @@ class BreedsFragment : Fragment() {
     //Change all
     private fun showError() {
         Toast.makeText(activity, "Ha ocurrido un error", Toast.LENGTH_SHORT)
-                .show()
+            .show()
     }
 }

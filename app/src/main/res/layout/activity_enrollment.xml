@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.EnrollmentActivity"
-    android:background="@color/grey_ligth">
+    android:background="@color/grey_ligth"
+    tools:context=".activities.EnrollmentActivity">
 
 
     <ImageView
@@ -26,15 +26,15 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/margin_32"
         android:layout_marginEnd="@dimen/margin_62"
+        android:autofillHints=""
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="@dimen/padding_8"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:drawablePadding="@dimen/padding_8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/passwordET"
@@ -43,15 +43,15 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/padding_8"
         android:layout_marginEnd="@dimen/margin_62"
-        android:ems="10"
-        android:hint="@string/password"
+        android:autofillHints=""
         android:drawableStart="@drawable/ic_baseline_lock_24"
         android:drawablePadding="@dimen/padding_8"
+        android:ems="10"
+        android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailET"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/emailET" />
 
     <Button
         android:id="@+id/enrollmentButton"
@@ -60,12 +60,12 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/margin_16"
         android:layout_marginEnd="@dimen/margin_62"
+        android:background="@drawable/button_rounded"
         android:text="@string/signin"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordET"
-        android:background="@drawable/button_rounded"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
 
     <Button
         android:id="@+id/backButton"
@@ -74,13 +74,13 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/padding_8"
         android:layout_marginEnd="@dimen/margin_62"
+        android:background="@drawable/button_rounded_border"
         android:text="@string/cancel"
+        android:textColor="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enrollmentButton"
-        android:background="@drawable/button_rounded_border"
-        android:textColor="@color/grey_dark_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/enrollmentButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
         android:name="com.celia.catpedia_android.fragments.BreedsFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_breeds">
-    <argument
+        <argument
             android:name="breedId"
             app:argType="string" />
         <action
@@ -20,7 +20,7 @@
         android:id="@+id/breedDetailActivity"
         android:name="com.celia.catpedia_android.activities.BreedDetailActivity"
         android:label="activity_breed_detail"
-        tools:layout="@layout/activity_breed_detail" >
+        tools:layout="@layout/activity_breed_detail">
         <argument
             android:name="breedId"
             app:argType="string" />

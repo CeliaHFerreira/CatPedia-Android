@@ -20,10 +20,10 @@
                 android:id="@+id/goBackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_4"
                 android:layout_marginStart="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
                 android:background="@drawable/button_rounded"
+                android:padding="@dimen/padding_4"
                 android:src="@drawable/ic_baseline_arrow_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -33,12 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/detail_breed_photo"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/breed_image_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_detail_height"
-                    android:contentDescription="@string/cat_breed"
-                    android:transitionName="carImage" />
+                    android:contentDescription="@string/cat_breed" />
 
                 <TextView
                     android:id="@+id/detail_breed_title"
@@ -150,6 +149,7 @@
                         style="@style/Widget.AppCompat.RatingBar.Indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:numStars="5"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvAdaptability"
@@ -166,14 +166,14 @@
                         android:id="@+id/tvAffection"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/affection"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbAffection"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <RatingBar
                         android:id="@+id/rbAffection"

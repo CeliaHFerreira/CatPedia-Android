@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
 import com.celia.catpedia_android.APIService
 import com.celia.catpedia_android.databinding.ActivityBreedDetailBinding
+import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.models.BreedDetail
 import kotlinx.android.synthetic.main.activity_breed_detail.*
 import kotlinx.coroutines.Dispatchers
@@ -25,13 +26,11 @@ class BreedDetailActivity : AppCompatActivity() {
         val binding = ActivityBreedDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         lifecycleScope.launch(Dispatchers.Main) {
-            val breed = getBreedDetail(args.breedId)[0].breeds[0]
 
-            detail_breed_title.text = breed.name
-            detail_origin.text = breed.origin
-            detail_temperament.text = breed.temperament
-            detail_lifeSpan.text = breed.lifeSpan
-            detail_description.text = breed.description
+            val breedDetail = getBreedDetail(args.breedId)
+            val breed = breedDetail[0].breeds[0]
+            setDetailBreed(breed)
+
         }
 
         goBackButton.setOnClickListener {
@@ -63,6 +62,35 @@ class BreedDetailActivity : AppCompatActivity() {
     private fun returnToList(view: View) {
         val homeIntent = Intent(this, HomeActivity::class.java)
         startActivity(homeIntent)
+    }
+
+
+    private fun setDetailBreed(breed: Breed) {
+        detail_breed_title.text = breed.name
+        detail_origin.text = breed.origin
+        detail_temperament.text = breed.temperament
+        detail_lifeSpan.text = breed.lifeSpan
+        detail_description.text = breed.description
+        rbAdaptability.numStars = 5
+        rbAdaptability.rating = breed.adaptability.toFloat()
+        rbAffection.numStars = 5
+        rbAffection.rating = breed.affectionLevel.toFloat()
+        rbChild.numStars = 5
+        rbChild.rating = breed.childFriendly.toFloat()
+        rbDog.numStars = 5
+        rbDog.rating = breed.dogFriendly.toFloat()
+        rbEnergy.numStars = 5
+        rbEnergy.rating = breed.energyLevel.toFloat()
+        rbHealthIssues.numStars = 5
+        rbHealthIssues.rating = breed.healthIssues.toFloat()
+        rbIntelligence.numStars = 5
+        rbIntelligence.rating = breed.intelligence.toFloat()
+        rbSocial.numStars = 5
+        rbSocial.rating = breed.socialNeeds.toFloat()
+        rbStrangers.numStars = 5
+        rbStrangers.rating = breed.strangerFriendly.toFloat()
+        rbVocalisation.numStars = 5
+        rbVocalisation.rating = breed.vocalisation.toFloat()
     }
 
     //Change all

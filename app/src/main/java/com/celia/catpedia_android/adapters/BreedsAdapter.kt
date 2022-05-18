@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso
 class BreedsAdapter(private val breeds: MutableList<Breed>) :
     RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val breedsView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_breed, parent, false)

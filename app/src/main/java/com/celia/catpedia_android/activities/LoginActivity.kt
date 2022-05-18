@@ -52,24 +52,27 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        signInButton.setOnClickListener{
+        signInButton.setOnClickListener {
             showEnrollment()
         }
         loginButton.setOnClickListener {
             if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
-                        .addOnCompleteListener{
-                    if (it.isSuccessful) {
-                        showHome(it.result?.user?.email ?:"")
-                    } else {
-                        showAlert()
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    emailEditText.text.toString(),
+                    passwordEditText.text.toString()
+                )
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            showHome(it.result?.user?.email ?: "")
+                        } else {
+                            showAlert()
+                        }
                     }
-                }
             }
         }
         googleSingIn.setOnClickListener {
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+                .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
 
             val googleClient = GoogleSignIn.getClient(this, googleConf)
             googleClient.signOut()
@@ -107,13 +110,14 @@ class LoginActivity : AppCompatActivity() {
 
                 if (account != null) {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener{
-                        if (it.isSuccessful) {
-                            showHome(account.email ?: "")
-                        } else {
-                            showAlert()
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                showHome(account.email ?: "")
+                            } else {
+                                showAlert()
+                            }
                         }
-                    }
 
                 }
             } catch (err: ApiException) {
