@@ -7,7 +7,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.ItemBreedBinding
-import com.celia.catpedia_android.fragments.BreedsFragment
 import com.celia.catpedia_android.fragments.BreedsFragmentDirections
 import com.celia.catpedia_android.models.Breed
 import com.squareup.picasso.Picasso

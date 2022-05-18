@@ -8,6 +8,13 @@ import androidx.fragment.app.Fragment
 import com.celia.catpedia_android.R
 
 class ProfileFragment : Fragment() {
+
+    companion object {
+        fun newInstance(): ProfileFragment {
+            return ProfileFragment()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

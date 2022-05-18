@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.ActivityHomeBinding
@@ -17,27 +16,24 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
-
-    private lateinit var hBinding: ActivityHomeBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        hBinding = ActivityHomeBinding.inflate(layoutInflater)
+        val hBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(hBinding.root)
-
-        hBinding.navigation.setOnNavigationItemReselectedListener {
-            selectFragment(it)
-            true
-        }
 
         val bundle = intent.extras
         val email = bundle?.getString("email")
 
         setup()
+
         val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         preferences.putString("email", email)
         preferences.apply()
 
+        hBinding.navigation.setOnNavigationItemSelectedListener {
+            selectFragment(it)
+            true
+        }
     }
 
     private fun selectFragment(it: MenuItem) {
@@ -45,7 +41,8 @@ class HomeActivity : AppCompatActivity() {
 
         when (it.itemId) {
             R.id.navigation_home -> fragmentClicked = BreedsFragment.newInstance()
-            else -> fragmentClicked = FavoritesFragment.newInstance()
+            R.id.navigation_favorite -> fragmentClicked = FavoritesFragment.newInstance()
+            else -> fragmentClicked = ProfileFragment.newInstance()
         }
 
         val ft = supportFragmentManager.beginTransaction()

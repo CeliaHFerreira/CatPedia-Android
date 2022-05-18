@@ -1,6 +1,7 @@
 package com.celia.catpedia_android
 
 import com.celia.catpedia_android.models.Breed
+import com.celia.catpedia_android.models.BreedDetail
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -13,4 +14,6 @@ interface APIService {
     @GET
     fun getCatsBreeds(@Url url:String): Call<List<Breed>>
 
+    @GET
+    fun getBreedDetail(@Url url:String): Call<List<BreedDetail>>
 }
