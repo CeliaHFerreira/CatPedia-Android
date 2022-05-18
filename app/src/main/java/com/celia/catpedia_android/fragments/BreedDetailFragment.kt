@@ -1,19 +1,21 @@
 package com.celia.catpedia_android.fragments
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.celia.catpedia_android.models.Breed
+import com.celia.catpedia_android.R
 
 class BreedDetailFragment : Fragment() {
-    private val breed: Breed? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
-    companion object {
-        fun newInstance(breed: Breed?): BreedDetailFragment {
-            val breedDetailFragment = BreedDetailFragment()
-            val args = Bundle()
-            //args.putParcelable("breed", breed);
-            //BreedDetailFragment.setArguments(args);
-            return breedDetailFragment
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_breed_detail, container, false)
     }
 }

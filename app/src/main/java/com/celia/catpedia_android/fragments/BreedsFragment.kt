@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.celia.catpedia_android.APIService
 import com.celia.catpedia_android.adapters.BreedsAdapter
-import com.celia.catpedia_android.databinding.FragmentHomeListBinding
+import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -21,8 +21,9 @@ import kotlinx.coroutines.launch
 
 class BreedsFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeListBinding
+    private lateinit var binding: FragmentBreedsBinding
     private val breedList = mutableListOf<Breed>()
+
     companion object {
         fun newInstance(): BreedsFragment {
             return BreedsFragment()
@@ -35,7 +36,7 @@ class BreedsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeListBinding.inflate(inflater, container, false)
+        binding = FragmentBreedsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -8,7 +8,7 @@ import retrofit2.http.Url
 
 interface APIService {
     @Headers(
-        "x-api-key: "
+        "x-api-key: cd7828b3-f9d5-41ac-8008-ecf17b046d82"
     )
     @GET
     fun getCatsBreeds(@Url url:String): Call<List<Breed>>

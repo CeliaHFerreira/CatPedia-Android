@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_cats"
+    app:startDestination="@id/breedsFragment">
+    <fragment
+        android:id="@+id/breedsFragment"
+        android:name="com.celia.catpedia_android.fragments.BreedsFragment"
+        android:label="fragment_breeds"
+        tools:layout="@layout/fragment_breeds" >
+        <argument
+            android:name="breedId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_breedsFragment_to_breedDetailActivity"
+            app:destination="@id/breedDetailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/breedDetailActivity"
+        android:name="com.celia.catpedia_android.activities.BreedDetailActivity"
+        android:label="activity_breed_detail"
+        tools:layout="@layout/activity_breed_detail" >
+        <argument
+            android:name="breedId"
+            app:argType="string" />
+    </activity>
+</navigation>

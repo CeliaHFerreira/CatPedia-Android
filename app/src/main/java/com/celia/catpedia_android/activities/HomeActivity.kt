@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.ActivityHomeBinding
 import com.celia.catpedia_android.fragments.BreedsFragment
@@ -17,15 +19,16 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var hBinding: ActivityHomeBinding
-    private lateinit var hActiveFragment: Fragment
-    private lateinit var hFragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         hBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(hBinding.root)
 
-        selectFragment()
+        hBinding.navigation.setOnNavigationItemReselectedListener {
+            selectFragment(it)
+            true
+        }
 
         val bundle = intent.extras
         val email = bundle?.getString("email")
@@ -37,46 +40,18 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun selectFragment() {
+    private fun selectFragment(it: MenuItem) {
+        val fragmentClicked: Fragment
 
-        hFragmentManager = supportFragmentManager
-
-        val breedsFragment = BreedsFragment()
-        val favFragment = FavoritesFragment()
-        val profileFragment = ProfileFragment()
-
-        hActiveFragment = breedsFragment
-
-        hFragmentManager.beginTransaction()
-                .add(R.id.flContent, favFragment, FavoritesFragment::class.java.name)
-                .hide(favFragment).commit()
-        hFragmentManager.beginTransaction()
-                .add(R.id.flContent, profileFragment, ProfileFragment::class.java.name)
-                .hide(profileFragment).commit()
-        hFragmentManager.beginTransaction()
-                .add(R.id.flContent, breedsFragment, BreedsFragment::class.java.name)
-                .commit()
-
-        hBinding.navigation.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.navigation_home -> {
-                    hFragmentManager.beginTransaction().hide(hActiveFragment).show(breedsFragment).commit()
-                    hActiveFragment = breedsFragment
-                    true
-                }
-                R.id.navigation_favorite -> {
-                    hFragmentManager.beginTransaction().hide(hActiveFragment).show(favFragment).commit()
-                    hActiveFragment = favFragment
-                    true
-                }
-                R.id.navigation_profile -> {
-                    hFragmentManager.beginTransaction().hide(hActiveFragment).show(profileFragment).commit()
-                    hActiveFragment = profileFragment
-                    true
-                }
-                else -> false
-            }
+        when (it.itemId) {
+            R.id.navigation_home -> fragmentClicked = BreedsFragment.newInstance()
+            else -> fragmentClicked = FavoritesFragment.newInstance()
         }
+
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.flContent, fragmentClicked)
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        ft.commit()
     }
 
     private fun setup() {

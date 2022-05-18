@@ -20,7 +20,10 @@ class EnrollmentActivity : AppCompatActivity() {
     private fun setup() {
         enrollmentButton.setOnClickListener {
             if (emailET.text.isNotEmpty() && passwordET.text.isNotEmpty()) {
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailET.text.toString(), passwordET.text.toString()).addOnCompleteListener{
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                    emailET.text.toString(),
+                    passwordET.text.toString()
+                ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showHome()
                     } else {
@@ -47,5 +50,4 @@ class EnrollmentActivity : AppCompatActivity() {
         val homeIntent = Intent(this, HomeActivity::class.java)
         startActivity(homeIntent)
     }
-
 }

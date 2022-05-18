@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".fragments.BreedDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,56 +15,61 @@
             android:id="@+id/detail_breed_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/detail_breed_photo"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_detail_height"
-                android:transitionName="carImage"/>
+                android:transitionName="carImage" />
+
             <TextView
                 android:id="@+id/detail_breed_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_22"
                 android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/margin_16"
                 android:background="@drawable/background_rounded_top"
                 android:padding="@dimen/padding_16"
-                android:layout_marginStart="@dimen/margin_16"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_22"
                 tools:text="Siamese" />
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_almost_rounded"
             android:layout_marginLeft="@dimen/margin_16"
-            android:layout_marginBottom="@dimen/margin_16"
             android:layout_marginRight="@dimen/margin_16"
-            android:padding="@dimen/padding_16"
-            android:orientation="vertical">
+            android:layout_marginBottom="@dimen/margin_16"
+            android:background="@drawable/background_almost_rounded"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_16">
+
             <TextView
                 android:id="@+id/detail_origin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_20"
-                android:layout_gravity="bottom"
                 tools:text="Thailand" />
+
             <TextView
                 android:id="@+id/detail_temperament"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_18"
-                android:layout_gravity="bottom"
                 tools:text="Active, Agile, Clever, Sociable, Loving, Energetic" />
+
             <TextView
                 android:id="@+id/detail_lifeSpan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_18"
-                android:layout_gravity="bottom"
                 tools:text="12 -15" />
         </LinearLayout>
 
@@ -72,8 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_16"
-            android:orientation="vertical"
             android:background="@drawable/background_rounded"
+            android:orientation="vertical"
             android:padding="@dimen/padding_16">
 
             <TextView
@@ -82,26 +87,26 @@
                 android:text="@string/description"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_20"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_6"
+                android:layout_marginBottom="@dimen/margin_32"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_14"
-                android:layout_marginBottom="@dimen/margin_32"
                 tools:text="While Siamese cats are extremely fond of their people, they will follow you around and supervise your every move, being talkative and opinionated. They are a demanding and social cat, that do not like being left alone for long periods." />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_16"
                 android:text="@string/characteristics"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_20"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/margin_16"/>
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clAdaptability"
