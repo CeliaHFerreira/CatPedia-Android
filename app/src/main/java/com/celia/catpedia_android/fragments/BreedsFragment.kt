@@ -13,6 +13,7 @@ import com.celia.catpedia_android.APIService
 import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
+import com.celia.catpedia_android.persistence.AppBreedsDataBase
 import com.celia.catpedia_android.viewmodels.BreedListViewModel
 import kotlinx.android.synthetic.main.fragment_breeds.*
 import kotlinx.coroutines.Dispatchers
@@ -85,6 +86,7 @@ class BreedsFragment : Fragment() {
                 .getCatsBreeds("v1/breeds")
                 .execute()
             breeds = call.body()!!
+            saveBreedsDataBase(breeds)
             if (!call.isSuccessful) {
                 showError()
             }
@@ -96,5 +98,17 @@ class BreedsFragment : Fragment() {
     private fun showError() {
         Toast.makeText(activity, "Ha ocurrido un error", Toast.LENGTH_SHORT)
             .show()
+    }
+
+    fun saveBreedsDataBase(breeds: List<Breed>) {
+        val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
+        breeds.forEach{ breed ->
+            database.insertAll(breed)
+        }
+    }
+
+    fun returnBreedsDataBase(): List<Breed> {
+        val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
+        return database.getAll()
     }
 }

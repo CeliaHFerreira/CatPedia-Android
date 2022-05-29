@@ -1,9 +1,12 @@
 package com.celia.catpedia_android.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Breed(
-    @SerializedName("id") var id: String,
+    @PrimaryKey @SerializedName("id") var id: String,
     @SerializedName("weight") var weight: Weight,
     @SerializedName("name") var name: String,
     @SerializedName("temperament") var temperament: String,
@@ -32,7 +35,7 @@ data class Breed(
     @SerializedName("short_legs") var shortLegs: Int,
     @SerializedName("wikipedia_url") var wikipediaUrl: String?,
     @SerializedName("hypoallergenic") var hypoallergenic: Int,
-    @SerializedName("reference_image_id") var referenceImageId: String,
+    @SerializedName("reference_image_id") var referenceImageId: String?,
     @SerializedName("image") var image: Image?,
     var favorite: Boolean = false
 
