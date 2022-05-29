@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         preferences.putString("email", email)
         preferences.apply()
 
-        hBinding.navigation.setOnNavigationItemSelectedListener {
+        hBinding.navigation.setOnItemSelectedListener {
             selectFragment(it)
             true
         }

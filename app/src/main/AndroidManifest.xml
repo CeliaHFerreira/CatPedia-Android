@@ -14,8 +14,10 @@
         <activity android:name=".activities.BreedDetailActivity"></activity>
         <activity android:name=".activities.EnrollmentActivity" />
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.LoginActivity">
-        <intent-filter>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="true">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
