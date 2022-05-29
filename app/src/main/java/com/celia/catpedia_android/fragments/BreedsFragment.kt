@@ -1,5 +1,6 @@
 package com.celia.catpedia_android.fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,10 +18,10 @@ import com.celia.catpedia_android.persistence.AppBreedsDataBase
 import com.celia.catpedia_android.viewmodels.BreedListViewModel
 import kotlinx.android.synthetic.main.fragment_breeds.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlinx.coroutines.launch
 
 
 class BreedsFragment : Fragment() {
@@ -30,6 +31,7 @@ class BreedsFragment : Fragment() {
 
     private lateinit var binding: FragmentBreedsBinding
     private val breedList = mutableListOf<Breed>()
+    private var countNumberOfDataCall = 0
     companion object {
         fun newInstance(): BreedsFragment {
             return BreedsFragment()
@@ -81,15 +83,23 @@ class BreedsFragment : Fragment() {
 
     private suspend fun getBreeds(): List<Breed> {
         val breeds: List<Breed>
-        withContext(Dispatchers.IO) {
-            val call = getRetrofit().create(APIService::class.java)
-                .getCatsBreeds("v1/breeds")
-                .execute()
-            breeds = call.body()!!
-            saveBreedsDataBase(breeds)
-            if (!call.isSuccessful) {
-                showError()
+        val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE)
+        countNumberOfDataCall = prefs?.getInt("breeds", 0)!!
+        if (countNumberOfDataCall % 10 == 0 || countNumberOfDataCall == 0) {
+            withContext(Dispatchers.IO) {
+                val call = getRetrofit().create(APIService::class.java)
+                    .getCatsBreeds("v1/breeds")
+                    .execute()
+                breeds = call.body()!!
+                countNumberOfDataCall++
+                saveBreedsDataBase(breeds)
+                if (!call.isSuccessful) {
+                    showError()
+                }
             }
+        } else {
+            countNumberOfDataCall++
+            breeds = returnBreedsDataBase()
         }
         return breeds
     }
@@ -105,10 +115,20 @@ class BreedsFragment : Fragment() {
         breeds.forEach{ breed ->
             database.insertAll(breed)
         }
+        updateCountSharedPreferences()
     }
 
     fun returnBreedsDataBase(): List<Breed> {
         val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
+        updateCountSharedPreferences()
         return database.getAll()
+    }
+
+    fun updateCountSharedPreferences() {
+        val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE) ?: return
+        with (prefs.edit()) {
+            putInt("breeds", countNumberOfDataCall)
+            apply()
+        }
     }
 }
