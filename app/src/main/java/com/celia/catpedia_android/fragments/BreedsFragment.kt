@@ -90,7 +90,8 @@ class BreedsFragment : Fragment() {
                 val call = getRetrofit().create(APIService::class.java)
                     .getCatsBreeds("v1/breeds")
                     .execute()
-                breeds = call.body()!!
+                breeds = call.body() ?: returnBreedsDataBase()
+
                 countNumberOfDataCall++
                 saveBreedsDataBase(breeds)
                 if (!call.isSuccessful) {
