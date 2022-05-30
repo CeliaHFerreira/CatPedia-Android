@@ -1,5 +1,6 @@
 package com.celia.catpedia_android.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.ItemBreedBinding
 import com.celia.catpedia_android.fragments.BreedsFragmentDirections
 import com.celia.catpedia_android.models.Breed
+import com.celia.catpedia_android.persistence.AppFavoritesDataBase
 import com.squareup.picasso.Picasso
 
 
@@ -45,6 +47,17 @@ class BreedsAdapter(private val breeds: MutableList<Breed>) :
                     like.setImageResource(R.drawable.ic_no_favorite)
                 }
 
+                like.setOnClickListener {
+                    breed.let { breed ->
+                        breed.favorite = !breed.favorite
+                        if (breed.favorite) {
+                            like.setImageResource(R.drawable.ic_favorite)
+                        } else {
+                            like.setImageResource(R.drawable.ic_no_favorite)
+                        }
+                        setBreedInFavoriteDatabase(breed, itemView.context)
+                    }
+                }
                 root.setOnClickListener {
                     breed.let { breed ->
                         navigateToBreed(breed, it)
@@ -60,6 +73,15 @@ class BreedsAdapter(private val breeds: MutableList<Breed>) :
             val action =
                 BreedsFragmentDirections.actionBreedsFragmentToBreedDetailActivity(breed.id)
             view.findNavController().navigate(action)
+        }
+
+        private fun setBreedInFavoriteDatabase(breed: Breed, context: Context) {
+            val favoriteDatabase = AppFavoritesDataBase.getAppDatabase(context).favoritesDao()
+            if (breed.favorite) {
+                favoriteDatabase.insertFavorite(breed)
+            } else {
+                favoriteDatabase.deleteFromFavorites(breed.id)
+            }
         }
     }
 }

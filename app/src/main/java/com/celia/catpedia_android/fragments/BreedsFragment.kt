@@ -15,6 +15,7 @@ import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.persistence.AppBreedsDataBase
+import com.celia.catpedia_android.persistence.AppFavoritesDataBase
 import com.celia.catpedia_android.viewmodels.BreedListViewModel
 import kotlinx.android.synthetic.main.fragment_breeds.*
 import kotlinx.coroutines.Dispatchers
@@ -82,7 +83,7 @@ class BreedsFragment : Fragment() {
 
 
     private suspend fun getBreeds(): List<Breed> {
-        val breeds: List<Breed>
+        var breeds: List<Breed>
         val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE)
         countNumberOfDataCall = prefs?.getInt("breeds", 0)!!
         if (countNumberOfDataCall % 10 == 0 || countNumberOfDataCall == 0) {
@@ -91,7 +92,7 @@ class BreedsFragment : Fragment() {
                     .getCatsBreeds("v1/breeds")
                     .execute()
                 breeds = call.body() ?: returnBreedsDataBase()
-
+                breeds = retrieveFavoritesBreeds(breeds)
                 countNumberOfDataCall++
                 saveBreedsDataBase(breeds)
                 if (!call.isSuccessful) {
@@ -100,7 +101,7 @@ class BreedsFragment : Fragment() {
             }
         } else {
             countNumberOfDataCall++
-            breeds = returnBreedsDataBase()
+            breeds = retrieveFavoritesBreeds(returnBreedsDataBase())
         }
         return breeds
     }
@@ -131,5 +132,18 @@ class BreedsFragment : Fragment() {
             putInt("breeds", countNumberOfDataCall)
             apply()
         }
+    }
+
+    fun retrieveFavoritesBreeds(breed: List<Breed>): List<Breed> {
+        val favoritesDataBase = AppFavoritesDataBase.getAppDatabase(requireContext()).favoritesDao()
+        val favoritesBreeds = favoritesDataBase.getFavorites()
+        favoritesBreeds.forEach { favoriteBreed ->
+            breed.forEach { breed ->
+                if (breed.id == favoriteBreed.id) {
+                    breed.favorite = true
+                }
+            }
+        }
+        return breed
     }
 }
