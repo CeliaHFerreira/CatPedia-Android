@@ -16,6 +16,18 @@
             android:id="@+id/action_breedsFragment_to_breedDetailActivity"
             app:destination="@id/breedDetailActivity" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.celia.catpedia_android.fragments.FavoritesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorite_list">
+        <argument
+            android:name="breedId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_breedDetailActivity"
+            app:destination="@id/breedDetailActivity" />
+    </fragment>
     <activity
         android:id="@+id/breedDetailActivity"
         android:name="com.celia.catpedia_android.activities.BreedDetailActivity"

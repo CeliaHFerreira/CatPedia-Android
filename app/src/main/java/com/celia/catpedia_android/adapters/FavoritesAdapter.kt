@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.ItemBreedBinding
 import com.celia.catpedia_android.fragments.BreedsFragmentDirections
+import com.celia.catpedia_android.fragments.FavoritesFragmentDirections
 import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
 import com.squareup.picasso.Picasso
 
 
-class BreedsAdapter(private val breeds: MutableList<Breed>) :
-    RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
+class FavoritesAdapter(private val breeds: MutableList<Breed>) :
+    RecyclerView.Adapter<FavoritesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val breedsView =
@@ -72,7 +73,7 @@ class BreedsAdapter(private val breeds: MutableList<Breed>) :
             view: View
         ) {
             val action =
-                BreedsFragmentDirections.actionBreedsFragmentToBreedDetailActivity(breed.id)
+                FavoritesFragmentDirections.actionFavoritesFragmentToBreedDetailActivity(breed.id)
             view.findNavController().navigate(action)
         }
 

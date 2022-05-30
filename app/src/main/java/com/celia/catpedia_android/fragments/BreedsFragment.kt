@@ -112,7 +112,7 @@ class BreedsFragment : Fragment() {
             .show()
     }
 
-    fun saveBreedsDataBase(breeds: List<Breed>) {
+    private fun saveBreedsDataBase(breeds: List<Breed>) {
         val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
         breeds.forEach{ breed ->
             database.insertAll(breed)
@@ -120,13 +120,13 @@ class BreedsFragment : Fragment() {
         updateCountSharedPreferences()
     }
 
-    fun returnBreedsDataBase(): List<Breed> {
+    private fun returnBreedsDataBase(): List<Breed> {
         val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
         updateCountSharedPreferences()
         return database.getAll()
     }
 
-    fun updateCountSharedPreferences() {
+    private fun updateCountSharedPreferences() {
         val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE) ?: return
         with (prefs.edit()) {
             putInt("breeds", countNumberOfDataCall)
@@ -134,7 +134,7 @@ class BreedsFragment : Fragment() {
         }
     }
 
-    fun retrieveFavoritesBreeds(breed: List<Breed>): List<Breed> {
+    private fun retrieveFavoritesBreeds(breed: List<Breed>): List<Breed> {
         val favoritesDataBase = AppFavoritesDataBase.getAppDatabase(requireContext()).favoritesDao()
         val favoritesBreeds = favoritesDataBase.getFavorites()
         favoritesBreeds.forEach { favoriteBreed ->
