@@ -4,30 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_cats"
     app:startDestination="@id/breedsFragment">
-    <fragment
+    <activity
         android:id="@+id/breedsFragment"
-        android:name="com.celia.catpedia_android.fragments.BreedsFragment"
+        android:name="com.celia.catpedia_android.activities.BreedsActivity"
         android:label="@string/home"
-        tools:layout="@layout/fragment_breeds">
+        tools:layout="@layout/activity_breeds">
         <argument
             android:name="breedId"
             app:argType="string" />
         <action
             android:id="@+id/action_breedsFragment_to_breedDetailActivity"
             app:destination="@id/breedDetailActivity" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.celia.catpedia_android.fragments.FavoritesFragment"
-        android:label="@string/favorites"
-        tools:layout="@layout/fragment_favorite_list">
-        <argument
-            android:name="breedId"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_breedDetailActivity"
-            app:destination="@id/breedDetailActivity" />
-    </fragment>
+    </activity>
     <activity
         android:id="@+id/breedDetailActivity"
         android:name="com.celia.catpedia_android.activities.BreedDetailActivity"
