@@ -8,6 +8,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file(debugStoreFile)
+            storePassword DebugStorePassword
+            keyAlias DebugKeyAlias
+            keyPassword DebugKeyPassword
+        }
+        release {
+            storeFile file(ReleaseStoreFile)
+            storePassword ReleaseStorePassword
+            keyAlias ReleaseKeyAlias
+            keyPassword ReleaseKeyPassword
+        }
+    }
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
@@ -24,9 +38,17 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

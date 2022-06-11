@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677104464593:android:5774064da8b3526dd10bf0",
+        "android_client_info": {
+          "package_name": "com.celia.catpedia_android.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677104464593-sdbkjafdvhrlgso8dn0ksvfitubebmgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlKZiaJQ99c9gk8qodVMfzxLo5XuOLFiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677104464593-sdbkjafdvhrlgso8dn0ksvfitubebmgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

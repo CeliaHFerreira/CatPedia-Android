@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.celia.catpedia_android.APIService
+import com.celia.catpedia_android.BuildConfig
 import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
@@ -75,21 +76,29 @@ class BreedsFragment : Fragment() {
     }
 
     private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://api.thecatapi.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        // We simulate different EndPoint without persistence
+        return if (BuildConfig.DEBUG) {
+            Retrofit.Builder()
+                .baseUrl("https://api.thecatapi.com/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        } else {
+            Retrofit.Builder()
+                .baseUrl("https://api.thecatapi.com/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
     }
 
 
     private suspend fun getBreeds(): List<Breed> {
         var breeds: List<Breed>
         val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE)
-        countNumberOfDataCall = prefs?.getInt("breeds", 0)!!
+        countNumberOfDataCall = if (BuildConfig.DEBUG) 0 else prefs?.getInt("breeds", 0)!! // We simulate different EndPoint without persistence
         if (countNumberOfDataCall % 10 == 0 || countNumberOfDataCall == 0) {
             withContext(Dispatchers.IO) {
                 val call = getRetrofit().create(APIService::class.java)
-                    .getCatsBreeds("v1/breeds")
+                    .getCatsBreeds("breeds")
                     .execute()
                 breeds = call.body() ?: returnBreedsDataBase()
                 breeds = retrieveFavoritesBreeds(breeds)

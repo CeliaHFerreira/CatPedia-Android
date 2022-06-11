@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
 import com.celia.catpedia_android.APIService
+import com.celia.catpedia_android.BuildConfig
 import com.celia.catpedia_android.adapters.ImageDetailAdapter
 import com.celia.catpedia_android.databinding.ActivityBreedDetailBinding
 import com.celia.catpedia_android.models.Breed
@@ -46,10 +47,18 @@ class BreedDetailActivity : AppCompatActivity() {
     }
 
     private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://api.thecatapi.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        // We simulate different EndPoint without persistence
+        return if (BuildConfig.DEBUG) {
+            Retrofit.Builder()
+                .baseUrl("https://api.thecatapi.com/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        } else {
+            Retrofit.Builder()
+                .baseUrl("https://api.thecatapi.com/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
     }
 
     private fun selectImages(breedDetails: List<BreedDetail>) {
@@ -65,7 +74,7 @@ class BreedDetailActivity : AppCompatActivity() {
         val breed: List<BreedDetail>
         withContext(Dispatchers.IO) {
             val call = getRetrofit().create(APIService::class.java)
-                .getBreedDetail("/v1/images/search?breed_ids=$id&limit=4")
+                .getBreedDetail("images/search?breed_ids=$id&limit=4")
                 .execute()
             breed = call.body()!!
             if (!call.isSuccessful) {
