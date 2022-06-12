@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -25,22 +26,21 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class BreedsFragment : Fragment() {
 
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
     private lateinit var viewModel: BreedListViewModel
 
     private lateinit var binding: FragmentBreedsBinding
-    private val breedList = mutableListOf<Breed>()
+    private var breedList = mutableListOf<Breed>()
     private var countNumberOfDataCall = 0
+
     companion object {
         fun newInstance(): BreedsFragment {
             return BreedsFragment()
         }
     }
 
-    //Control not call all the time this
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,6 +49,7 @@ class BreedsFragment : Fragment() {
         binding = FragmentBreedsBinding.inflate(inflater, container, false)
         binding.svBreeds.visibility = View.GONE
         binding.srBreeds.visibility = View.GONE
+        setupSearchView()
         return binding.root
     }
 
@@ -56,16 +57,47 @@ class BreedsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         swipeRefreshLayout = srBreeds
         swipeRefreshLayout?.setOnRefreshListener {
+            binding.svBreeds.setQuery("", true)
             setData()
         }
         setData()
     }
 
+    private fun setupSearchView() {
+        binding.svBreeds.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                if (p0 == null) {
+                    return false
+                }
+                if (p0.isEmpty()) {
+                    binding.rvBreeds.adapter = BreedsAdapter(breedList)
+                    return false
+                } else {
+                    return breedList.filter {
+                        it.name.contains(p0)
+                    }.isEmpty()
+                }
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                if (p0 == null || p0.isEmpty()) {
+                    binding.rvBreeds.adapter = BreedsAdapter(breedList)
+                    return false
+                }
+                val breedFilter = getFilterbreeds(p0, breedList)
+                binding.rvBreeds.adapter = BreedsAdapter(breedFilter.toMutableList())
+                swipeRefreshLayout?.isRefreshing = false
+                return false
+            }
+
+        })
+    }
+
     private fun setData() {
         breedList.clear()
         lifecycleScope.launch(Dispatchers.Main) {
-            val breeds = getBreeds()
-            breedList.addAll(breeds)
+            breedList = getBreeds() as MutableList<Breed>
             binding.svBreeds.visibility = View.VISIBLE
             binding.srBreeds.visibility = View.VISIBLE
             binding.loadingSpinner.visibility = View.GONE
@@ -76,25 +108,27 @@ class BreedsFragment : Fragment() {
     }
 
     private fun getRetrofit(): Retrofit {
-        // We simulate different EndPoint without persistence
-        return if (BuildConfig.DEBUG) {
-            Retrofit.Builder()
+        if (BuildConfig.DEBUG) {
+            //WE simulate different Endpoint whithoutPersistance
+            return Retrofit.Builder()
                 .baseUrl("https://api.thecatapi.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         } else {
-            Retrofit.Builder()
+            return Retrofit.Builder()
                 .baseUrl("https://api.thecatapi.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
     }
 
-
     private suspend fun getBreeds(): List<Breed> {
         var breeds: List<Breed>
         val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE)
-        countNumberOfDataCall = if (BuildConfig.DEBUG) 0 else prefs?.getInt("breeds", 0)!! // We simulate different EndPoint without persistence
+        countNumberOfDataCall = if (BuildConfig.DEBUG) 0 else prefs?.getInt(
+            "breeds",
+            0
+        )!! // We simulate no persistance in debug
         if (countNumberOfDataCall % 10 == 0 || countNumberOfDataCall == 0) {
             withContext(Dispatchers.IO) {
                 val call = getRetrofit().create(APIService::class.java)
@@ -123,7 +157,7 @@ class BreedsFragment : Fragment() {
 
     private fun saveBreedsDataBase(breeds: List<Breed>) {
         val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
-        breeds.forEach{ breed ->
+        breeds.forEach { breed ->
             database.insertAll(breed)
         }
         updateCountSharedPreferences()
@@ -137,7 +171,7 @@ class BreedsFragment : Fragment() {
 
     private fun updateCountSharedPreferences() {
         val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE) ?: return
-        with (prefs.edit()) {
+        with(prefs.edit()) {
             putInt("breeds", countNumberOfDataCall)
             apply()
         }
@@ -154,5 +188,16 @@ class BreedsFragment : Fragment() {
             }
         }
         return breed
+    }
+
+    private fun getFilterbreeds(nameSearched: String, breedList: List<Breed>): List<Breed> {
+
+        if (nameSearched.isEmpty()) {
+            return breedList
+        } else {
+            return breedList.filter { breed ->
+                breed.name.lowercase().contains(nameSearched)
+            }
+        }
     }
 }
