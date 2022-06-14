@@ -13,4 +13,7 @@ interface FavoritesDao {
 
     @Query("DELETE FROM breed WHERE id = :id")
     fun deleteFromFavorites(id: String)
+
+    @Query("DELETE FROM breed")
+    fun deleteAllFavorites()
 }
