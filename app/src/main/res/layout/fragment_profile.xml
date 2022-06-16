@@ -7,7 +7,6 @@
     android:background="@drawable/profile_background"
     tools:context=".fragments.ProfileFragment">
 
-
     <ScrollView
         android:id="@+id/svProfile"
         android:layout_width="match_parent"
@@ -47,6 +46,7 @@
                         android:text="User"
                         android:textSize="40sp"
                         android:textStyle="bold"
+                        android:textColor="@color/grey_dark_text"
                         app:layout_constraintBottom_toTopOf="@id/tvEmail"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +59,7 @@
                         android:layout_marginBottom="6dp"
                         android:text="User@user.com"
                         android:textSize="20sp"
+                        android:textColor="@color/grey_dark_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -108,9 +109,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_16"
-                    android:text="Edit"
+                    android:text="@string/change_mode"
                     android:textSize="25sp"
                     android:textStyle="bold"
+                    android:textColor="@color/grey_dark_text"
                     app:layout_constraintStart_toEndOf="@+id/ivEdit"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,7 +123,6 @@
                     android:layout_marginTop="@dimen/margin_6"
                     android:background="@drawable/button_rounded"
                     android:padding="@dimen/padding_16"
-                    android:text="Edit"
                     android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@+id/tvEdit" />
 
@@ -150,10 +151,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_16"
-                    android:text="Notifications"
+                    android:text="@string/notifications"
                     android:textSize="25sp"
                     android:textStyle="bold"
-
+                    android:textColor="@color/grey_dark_text"
                     app:layout_constraintEnd_toStartOf="@+id/ivNotification"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -164,7 +165,7 @@
                     android:layout_marginTop="@dimen/margin_6"
                     android:background="@drawable/button_rounded"
                     android:padding="@dimen/padding_16"
-                    android:text="On"
+                    android:text="@string/on"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -195,9 +196,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_16"
-                    android:text="Delete Favorites"
+                    android:text="@string/delete_favorites"
                     android:textSize="25sp"
                     android:textStyle="bold"
+                    android:textColor="@color/grey_dark_text"
                     app:layout_constraintStart_toEndOf="@+id/ivFavorite"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -208,7 +210,7 @@
                     android:layout_marginTop="@dimen/margin_6"
                     android:background="@drawable/button_rounded"
                     android:padding="@dimen/padding_16"
-                    android:text="Delete"
+                    android:text="@string/delete"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -237,9 +239,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_16"
-                    android:text="Exit"
+                    android:text="@string/exit"
                     android:textSize="25sp"
                     android:textStyle="bold"
+                    android:textColor="@color/grey_dark_text"
                     app:layout_constraintEnd_toStartOf="@+id/ivLogOut"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -250,7 +253,7 @@
                     android:layout_marginTop="@dimen/margin_6"
                     android:background="@drawable/button_rounded_border"
                     android:padding="@dimen/padding_16"
-                    android:text="Log Out"
+                    android:text="@string/log_out"
                     android:textColor="@color/dark_pink"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

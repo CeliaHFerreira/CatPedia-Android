@@ -1,18 +1,18 @@
 <resources>
     <string name="app_name">CatPedia</string>
     <string name="email">Email</string>
-    <string name="password">Contraseña</string>
-    <string name="login">Entrar</string>
-    <string name="signin">Registrarse</string>
-    <string name="cancel">Cancelar</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signin">Signin</string>
+    <string name="cancel">Cancel</string>
     <string name="prefs_file">com.celia.catpedia_android.PREFERENCE_FILE_KEY</string>
-    <string name="sign_in_with_google">Login con google</string>
+    <string name="sign_in_with_google">Login with google</string>
     <string name="cat_app">Cat_app</string>
     <string name="breed">breed</string>
     <string name="like_empty">like_empty</string>
     <string name="home">Home</string>
-    <string name="favorites">Favoritos</string>
-    <string name="profile">Perfil</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
     <string name="description">Description</string>
     <string name="characteristics">Characteristics</string>
     <string name="vocalisation">Vocalisation</string>
@@ -25,6 +25,16 @@
     <string name="child_friendly">Child Friendly</string>
     <string name="affection">Affection</string>
     <string name="adaptability">Adaptability</string>
-    <string name="cat_breed">Raza gato</string>
-    <string name="returnToList">Volver</string>
+    <string name="cat_breed">Cat breed</string>
+    <string name="returnToList">Return</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="change_mode">Change mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="delete_favorites">Delete Favorites</string>
+    <string name="delete">Delete</string>
+    <string name="exit">Exit</string>
+    <string name="log_out">Log Out</string>
+    <string name="light_mode">Light mode</string>
+    <string name="dark_mode">Dark mode</string>
 </resources>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/grey_ligth"
     android:layout_height="wrap_content">
 
     <ScrollView
@@ -49,7 +50,7 @@
                     android:layout_marginStart="@dimen/margin_16"
                     android:background="@drawable/background_rounded_top"
                     android:padding="@dimen/padding_16"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_22"
                     tools:text="Siamese" />
             </FrameLayout>
@@ -69,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_20"
                     tools:text="Thailand" />
 
@@ -78,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_18"
                     tools:text="Active, Agile, Clever, Sociable, Loving, Energetic" />
 
@@ -87,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_18"
                     tools:text="12 -15" />
             </LinearLayout>
@@ -104,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/description"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_20"
                     android:textStyle="bold" />
 
@@ -114,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_6"
                     android:layout_marginBottom="@dimen/margin_32"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_14"
                     tools:text="While Siamese cats are extremely fond of their people, they will follow you around and supervise your every move, being talkative and opinionated. They are a demanding and social cat, that do not like being left alone for long periods." />
 
@@ -123,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_16"
                     android:text="@string/characteristics"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_20"
                     android:textStyle="bold" />
 
@@ -139,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/adaptability"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -169,7 +170,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/affection"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -201,7 +202,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/child_friendly"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -232,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/dog_friendly"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -263,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/energy_level"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -294,7 +295,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/health_issues"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -325,7 +326,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/intelligence"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -356,7 +357,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/social_needs"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -387,7 +388,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/strangers_friendly"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -418,7 +419,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/vocalisation"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_18"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"

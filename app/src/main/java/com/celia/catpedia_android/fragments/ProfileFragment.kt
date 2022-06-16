@@ -3,6 +3,7 @@ package com.celia.catpedia_android.fragments
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
@@ -31,7 +32,15 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.btNotification.text = "OFF"
+        binding.btNotification.text = getString(R.string.off)
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                binding.btEdit.text = getString(R.string.dark_mode)
+            }
+            Configuration.UI_MODE_NIGHT_NO -> {
+                binding.btEdit.text = getString(R.string.light_mode)
+            }
+        }
         setButtonNotification()
         setDarkMode()
         deleteDataBase()
@@ -42,7 +51,7 @@ class ProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun setButtonNotification() {
         binding.btNotification.setOnClickListener {
-            binding.btNotification.text = "ON"
+            binding.btNotification.text = getString(R.string.on)
             val notification = NotificationCompat.Builder(requireContext(), "chanel")
                 .setSmallIcon(R.drawable.ic_favorite)
                 .setContentTitle("Primera prueba")
@@ -59,20 +68,23 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun setDarkMode() {
+    fun setDarkMode() {
         //change darkMode to true
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         binding.btEdit.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
-            if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode()) {
+            if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+                binding.btEdit.text = getString(R.string.dark_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             } else {
+                binding.btEdit.text = getString(R.string.light_mode)
                 it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }
     }
 
-    private fun deleteDataBase() {
+    fun deleteDataBase() {
         //clear all elements of the database
         binding.btFavorite.setOnClickListener {
             //add haptic feedback
@@ -82,7 +94,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun selectLogOut() {
+    fun selectLogOut() {
         binding.btLogOut.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             requireActivity().finish()

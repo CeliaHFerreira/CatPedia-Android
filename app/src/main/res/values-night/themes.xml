@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CatFacts" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.CatPedia" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/pink_bright</item>
         <item name="colorPrimaryVariant">@color/pink_light</item>

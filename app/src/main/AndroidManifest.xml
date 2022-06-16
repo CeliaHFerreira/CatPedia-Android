@@ -3,7 +3,7 @@
     package="com.celia.catpedia_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activities.BreedDetailActivity" />
+        <receiver
+            android:name=".activities.Notification"
+            android:enabled="true"/>
+        <activity android:name=".activities.BreedDetailActivity"/>
         <activity android:name=".activities.EnrollmentActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity
