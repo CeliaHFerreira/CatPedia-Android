@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
@@ -42,7 +43,7 @@ class BreedDetailActivity : AppCompatActivity() {
         }
 
         goBackButton.setOnClickListener {
-            returnToList(it)
+            super.onBackPressed()
         }
     }
 
@@ -83,12 +84,6 @@ class BreedDetailActivity : AppCompatActivity() {
         }
         return breed
     }
-
-    private fun returnToList(view: View) {
-        val homeIntent = Intent(this, HomeActivity::class.java)
-        startActivity(homeIntent)
-    }
-
 
     private fun setDetailBreed(breed: Breed) {
         detail_breed_title.text = breed.name
