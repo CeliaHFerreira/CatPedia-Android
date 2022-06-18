@@ -51,7 +51,7 @@ class ProfileFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun setButtonNotification() {
-        binding.btNotification.setOnClickListener {
+        binding.btNotification.tvBtnProfileButton.setOnClickListener {
             binding.btNotification.tvBtnProfileButton.text = getString(R.string.on)
             val notification = NotificationCompat.Builder(requireContext(), "chanel")
                 .setSmallIcon(R.drawable.ic_favorite)
@@ -72,7 +72,7 @@ class ProfileFragment : Fragment() {
     fun setDarkMode() {
         //change darkMode to true
         val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        binding.btEdit.setOnClickListener {
+        binding.btEdit.tvBtnProfileButton.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                 binding.btEdit.tvBtnProfileButton.text = getString(R.string.dark_mode)
@@ -87,7 +87,7 @@ class ProfileFragment : Fragment() {
 
     fun deleteDataBase() {
         //clear all elements of the database
-        binding.btFavorite.setOnClickListener {
+        binding.btFavorite.tvBtnProfileButton.setOnClickListener {
             //add haptic feedback
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             val favoritesDataBase = AppFavoritesDataBase.getAppDatabase(requireContext()).favoritesDao()
@@ -96,7 +96,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun selectLogOut() {
-        binding.btLogOut.setOnClickListener {
+        binding.btLogOut.tvBtnProfileButton.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             requireActivity().finish()
         }
