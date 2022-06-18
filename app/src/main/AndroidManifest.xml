@@ -6,15 +6,15 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <receiver
             android:name=".activities.Notification"
             android:enabled="true"/>
-        <activity android:name=".activities.BreedDetailActivity"/>
+        <activity android:name=".activities.BreedDetailActivity" />
         <activity android:name=".activities.EnrollmentActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity

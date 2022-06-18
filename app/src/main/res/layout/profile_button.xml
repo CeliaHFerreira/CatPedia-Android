@@ -19,7 +19,7 @@
             android:layout_height="50dp"
             android:layout_gravity="start"
             android:elevation="10dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher_foreground" />
     </FrameLayout>
 
     <TextView
