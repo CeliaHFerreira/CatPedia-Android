@@ -37,4 +37,7 @@
     <string name="log_out">Log Out</string>
     <string name="light_mode">Light mode</string>
     <string name="dark_mode">Dark mode</string>
+    <string name="a_z">A…Z</string>
+    <string name="z_a">Z…A</string>
+    <string name="dark_light">Change dark/light mode</string>
 </resources>

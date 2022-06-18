@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tbAZ"
+        android:icon="@drawable/ic_format_list"
+        android:title="@string/a_z" />
+    <item
+        android:id="@+id/tbZA"
+        android:icon="@drawable/ic_format_list"
+        android:title="@string/z_a" />
+    <item
+        android:id="@+id/tbChange"
+        android:icon="@drawable/ic_format_list"
+        android:title="@string/dark_light" />
+</menu>
