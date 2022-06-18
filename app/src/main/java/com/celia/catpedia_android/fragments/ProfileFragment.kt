@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.FragmentProfileBinding
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
+import kotlinx.android.synthetic.main.profile_button.view.*
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -32,13 +33,13 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.btNotification.text = getString(R.string.off)
+        binding.btNotification.tvBtnProfileButton.text = getString(R.string.off)
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_YES -> {
-                binding.btEdit.text = getString(R.string.dark_mode)
+                binding.btEdit.tvBtnProfileButton.text = getString(R.string.dark_mode)
             }
             Configuration.UI_MODE_NIGHT_NO -> {
-                binding.btEdit.text = getString(R.string.light_mode)
+                binding.btEdit.tvBtnProfileButton.text = getString(R.string.light_mode)
             }
         }
         setButtonNotification()
@@ -51,7 +52,7 @@ class ProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun setButtonNotification() {
         binding.btNotification.setOnClickListener {
-            binding.btNotification.text = getString(R.string.on)
+            binding.btNotification.tvBtnProfileButton.text = getString(R.string.on)
             val notification = NotificationCompat.Builder(requireContext(), "chanel")
                 .setSmallIcon(R.drawable.ic_favorite)
                 .setContentTitle("Primera prueba")
@@ -74,10 +75,10 @@ class ProfileFragment : Fragment() {
         binding.btEdit.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                binding.btEdit.text = getString(R.string.dark_mode)
+                binding.btEdit.tvBtnProfileButton.text = getString(R.string.dark_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             } else {
-                binding.btEdit.text = getString(R.string.light_mode)
+                binding.btEdit.tvBtnProfileButton.text = getString(R.string.light_mode)
                 it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }

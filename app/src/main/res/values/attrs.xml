@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ProfileButtonAttrs">
+        <attr name="profilebutton_image" format="reference"/>
+        <attr name="profilebutton_text" format="string" />
+        <attr name="profilebutton_btn" format="string" />
+        <attr name="profilebutton_background" format="reference" />
+        <attr name="profilebutton_textcolor" format="integer" />
+    </declare-styleable>
+</resources>

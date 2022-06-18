@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <FrameLayout
+        android:id="@+id/flProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivProfileButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:elevation="10dp"
+            android:src="@mipmap/ic_launcher" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTitleProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="@dimen/margin_16"
+        android:textColor="@color/grey_dark_text"
+        android:textSize="@dimen/text_25"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/flProfileButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Text" />
+    <TextView
+        android:id="@+id/tvBtnProfileButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@drawable/button_rounded"
+        android:gravity="center"
+        android:paddingVertical="@dimen/padding_16"
+        android:paddingHorizontal="@dimen/padding_32"
+        android:layout_marginVertical="@dimen/margin_8"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flProfileButton"
+        tools:text="Text" />
+</androidx.constraintlayout.widget.ConstraintLayout>

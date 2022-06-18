@@ -59,7 +59,7 @@
                         android:layout_marginBottom="6dp"
                         android:text="User@user.com"
                         android:textSize="20sp"
-                        android:textColor="@color/grey_dark_text"
+
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -85,181 +85,65 @@
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clEdit"
+            <com.celia.catpedia_android.customviews.ProfileButton
+                android:id="@+id/btEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clProfile">
+                app:layout_constraintTop_toBottomOf="@+id/clProfile"
+                app:profilebutton_image="@drawable/cat_edit"
+                app:profilebutton_text="@string/change_mode"
+                app:profilebutton_btn="@string/dark_mode"
+                app:profilebutton_background="@drawable/button_rounded"
+                app:profilebutton_textcolor="@color/white"/>
 
-                <ImageView
-                    android:id="@+id/ivEdit"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:elevation="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cat_edit" />
-
-                <TextView
-                    android:id="@+id/tvEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_16"
-                    android:text="@string/change_mode"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey_dark_text"
-                    app:layout_constraintStart_toEndOf="@+id/ivEdit"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_6"
-                    android:background="@drawable/button_rounded"
-                    android:padding="@dimen/padding_16"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toBottomOf="@+id/tvEdit" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+            <com.celia.catpedia_android.customviews.ProfileButton
+                android:id="@+id/btNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/clEdit">
+                app:layout_constraintTop_toBottomOf="@+id/clProfile"
+                app:profilebutton_image="@drawable/cat_ring"
+                app:profilebutton_text="@string/notifications"
+                app:profilebutton_btn="@string/on"
+                app:profilebutton_background="@drawable/button_rounded"
+                app:profilebutton_textcolor="@color/white"/>
 
-                <ImageView
-                    android:id="@+id/ivNotification"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cat_ring" />
-
-                <TextView
-                    android:id="@+id/tvNotification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_16"
-                    android:text="@string/notifications"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey_dark_text"
-                    app:layout_constraintEnd_toStartOf="@+id/ivNotification"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btNotification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_6"
-                    android:background="@drawable/button_rounded"
-                    android:padding="@dimen/padding_16"
-                    android:text="@string/on"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNotification" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
+            <com.celia.catpedia_android.customviews.ProfileButton
+                android:id="@+id/btFavorite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+                app:layout_constraintTop_toBottomOf="@+id/clProfile"
+                app:profilebutton_image="@drawable/cat_love"
+                app:profilebutton_text="@string/delete_favorites"
+                app:profilebutton_btn="@string/delete"
+                app:profilebutton_background="@drawable/button_rounded"
+                app:profilebutton_textcolor="@color/white"/>
 
-                <ImageView
-                    android:id="@+id/ivFavorite"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cat_love" />
-
-                <TextView
-                    android:id="@+id/tvFavorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_16"
-                    android:text="@string/delete_favorites"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey_dark_text"
-                    app:layout_constraintStart_toEndOf="@+id/ivFavorite"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btFavorite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_6"
-                    android:background="@drawable/button_rounded"
-                    android:padding="@dimen/padding_16"
-                    android:text="@string/delete"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvFavorite" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.celia.catpedia_android.customviews.ProfileButton
+                android:id="@+id/btLogOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_6"
-                android:layout_marginBottom="32dp"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
-
-                <ImageView
-                    android:id="@+id/ivLogOut"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cat_angry" />
-
-                <TextView
-                    android:id="@+id/tvLogOut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_16"
-                    android:text="@string/exit"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey_dark_text"
-                    app:layout_constraintEnd_toStartOf="@+id/ivLogOut"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btLogOut"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_6"
-                    android:background="@drawable/button_rounded_border"
-                    android:padding="@dimen/padding_16"
-                    android:text="@string/log_out"
-                    android:textColor="@color/dark_pink"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvLogOut" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginTop="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clProfile"
+                app:profilebutton_image="@drawable/cat_angry"
+                app:profilebutton_text="@string/exit"
+                app:profilebutton_btn="@string/log_out"
+                app:profilebutton_background="@drawable/button_rounded_border"
+                app:profilebutton_textcolor="@color/dark_pink"/>
         </LinearLayout>
     </ScrollView>
 
