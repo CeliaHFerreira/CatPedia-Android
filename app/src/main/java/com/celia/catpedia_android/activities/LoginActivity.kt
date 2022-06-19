@@ -2,10 +2,14 @@ package com.celia.catpedia_android.activities
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.celia.catpedia_android.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -19,6 +23,10 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private val GOOGLE_SIGN_IN = 200
+
+    companion object {
+        private const val SMS_PERMISSION_CODE = 101
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setup() {
         signInButton.setOnClickListener {
             showEnrollment()
+            checkPermission(android.Manifest.permission.READ_SMS , SMS_PERMISSION_CODE)
         }
         loginButton.setOnClickListener {
             if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
@@ -122,6 +131,35 @@ class LoginActivity : AppCompatActivity() {
                 }
             } catch (err: ApiException) {
                 showAlert()
+            }
+        }
+    }
+
+    private fun checkPermission(permission: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(this@LoginActivity, permission) == PackageManager.PERMISSION_DENIED) {
+
+            // Requesting the permission
+            ActivityCompat.requestPermissions(this@LoginActivity, arrayOf(permission), requestCode)
+        } else {
+            Toast.makeText(this@LoginActivity, "Permission already granted", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == SMS_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this@LoginActivity, "Sms Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@LoginActivity, "Sms Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        } else if (requestCode == SMS_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this@LoginActivity, "Sms Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@LoginActivity, "Sms Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
     }

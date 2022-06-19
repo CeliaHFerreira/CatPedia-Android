@@ -3,6 +3,7 @@
     <dimen name="margin_140">140dp</dimen>
     <dimen name="margin_120">120dp</dimen>
     <dimen name="margin_110">110dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
     <dimen name="margin_62">62dp</dimen>
     <dimen name="margin_42">42dp</dimen>
     <dimen name="margin_36">36dp</dimen>
@@ -30,6 +31,7 @@
     <dimen name="text_18">18sp</dimen>
     <dimen name="text_16">16sp</dimen>
     <dimen name="text_14">14sp</dimen>
+    <dimen name="item_loading">100dp</dimen>
     <dimen name="dimen_image_profile">120dp</dimen>
     <dimen name="dimen_40">40dp</dimen>
     <dimen name="height_icon_navigation">28dp</dimen>

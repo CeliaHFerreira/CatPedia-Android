@@ -27,8 +27,8 @@
                     android:id="@+id/clProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_36"
-                    android:layout_marginTop="@dimen/margin_140"
+                    android:layout_marginStart="@dimen/margin_6"
+                    android:layout_marginTop="@dimen/margin_120"
                     android:layout_marginEnd="@dimen/margin_6"
                     android:background="@drawable/background_rounded"
                     android:padding="@dimen/padding_16"
@@ -40,8 +40,8 @@
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_110"
-                        android:layout_marginTop="@dimen/margin_6"
+                        android:layout_marginStart="@dimen/margin_140"
+                        android:layout_marginTop="@dimen/margin_32"
                         android:layout_marginBottom="@dimen/margin_12"
                         android:text="@string/welcome"
                         android:textSize="@dimen/text_40"
@@ -55,12 +55,12 @@
                         android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_110"
-                        android:layout_marginBottom="@dimen/margin_6"
+                        android:layout_marginStart="@dimen/margin_32"
                         android:textSize="@dimen/text_20"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvName"
+                        tools:text="@string/your_email"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="@dimen/margin_120"
+                    android:layout_marginTop="@dimen/margin_100"
                     android:elevation="@dimen/dimen_10"
                     app:cardCornerRadius="@dimen/corner_12"
                     app:layout_constraintStart_toStartOf="parent"
