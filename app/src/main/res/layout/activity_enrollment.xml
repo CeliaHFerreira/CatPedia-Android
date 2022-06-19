@@ -28,17 +28,12 @@
         android:layout_marginEnd="@dimen/margin_62"
         android:autofillHints=""
         android:drawableStart="@drawable/ic_baseline_person_24"
-        android:backgroundTint="@color/grey_dark_text"
-        android:drawablePadding="@dimen/padding_8"
-        android:drawableTint="@color/grey_dark_text"
-        android:ems="10"
         android:hint="@string/email"
-        android:textColor="@color/grey_dark_text"
-        android:textColorHint="@color/grey_dark_text"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        style="@style/DefaultEditText"/>
 
     <EditText
         android:id="@+id/passwordET"
@@ -48,18 +43,13 @@
         android:layout_marginTop="@dimen/padding_8"
         android:layout_marginEnd="@dimen/margin_62"
         android:autofillHints=""
-        android:backgroundTint="@color/grey_dark_text"
         android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="@dimen/padding_8"
-        android:drawableTint="@color/grey_dark_text"
-        android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColor="@color/grey_dark_text"
-        android:textColorHint="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailET" />
+        app:layout_constraintTop_toBottomOf="@+id/emailET"
+        style="@style/DefaultEditText"/>
 
     <Button
         android:id="@+id/enrollmentButton"
@@ -68,12 +58,11 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/margin_16"
         android:layout_marginEnd="@dimen/margin_62"
-        android:background="@drawable/button_rounded"
         android:text="@string/signin"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordET"
+        style="@style/DefaultButton.Primary"/>
 
     <Button
         android:id="@+id/backButton"
@@ -82,13 +71,11 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/padding_8"
         android:layout_marginEnd="@dimen/margin_62"
-        android:background="@drawable/button_rounded_border"
         android:text="@string/cancel"
-        android:textColor="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enrollmentButton" />
+        app:layout_constraintTop_toBottomOf="@+id/enrollmentButton"
+        style="@style/DefaultButton.Secondary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

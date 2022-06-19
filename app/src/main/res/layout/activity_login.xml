@@ -22,24 +22,19 @@
 
     <EditText
         android:id="@+id/emailEditText"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/margin_32"
         android:layout_marginEnd="@dimen/margin_62"
         android:autofillHints=""
-        android:backgroundTint="@color/grey_dark_text"
         android:drawableStart="@drawable/ic_baseline_person_24"
-        android:drawablePadding="@dimen/padding_8"
-        android:drawableTint="@color/grey_dark_text"
-        android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColor="@color/grey_dark_text"
-        android:textColorHint="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        style="@style/DefaultEditText"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -49,18 +44,13 @@
         android:layout_marginTop="@dimen/padding_8"
         android:layout_marginEnd="@dimen/margin_62"
         android:autofillHints=""
-        android:backgroundTint="@color/grey_dark_text"
         android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="@dimen/padding_8"
-        android:drawableTint="@color/grey_dark_text"
-        android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColor="@color/grey_dark_text"
-        android:textColorHint="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        style="@style/DefaultEditText"/>
 
     <Button
         android:id="@+id/loginButton"
@@ -69,12 +59,11 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/margin_16"
         android:layout_marginEnd="@dimen/margin_62"
-        android:background="@drawable/button_rounded"
         android:text="@string/login"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        style="@style/DefaultButton.Primary"/>
 
     <Button
         android:id="@+id/signInButton"
@@ -83,13 +72,11 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/padding_8"
         android:layout_marginEnd="@dimen/margin_62"
-        android:background="@drawable/button_rounded_border"
         android:text="@string/signin"
-        android:textColor="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        style="@style/DefaultButton.Secondary"/>
 
     <Button
         android:id="@+id/googleSingIn"
@@ -98,13 +85,12 @@
         android:layout_marginStart="@dimen/margin_62"
         android:layout_marginTop="@dimen/margin_62"
         android:layout_marginEnd="@dimen/margin_62"
-        android:background="@color/white"
         android:drawableStart="@drawable/btn_google_light_normal"
         android:text="@string/sign_in_with_google"
-        android:textColor="@color/grey_dark_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/signInButton"
+        style="@style/DefaultButton.Alternative"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

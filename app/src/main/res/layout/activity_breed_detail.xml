@@ -51,9 +51,9 @@
                     android:layout_marginStart="@dimen/margin_16"
                     android:background="@drawable/background_rounded_top"
                     android:padding="@dimen/padding_16"
-                    android:textColor="@color/white"
                     android:textSize="@dimen/text_22"
-                    tools:text="Siamese" />
+                    tools:text="Siamese"
+                    style="@style/TextViewTitle"/>
             </FrameLayout>
 
             <LinearLayout
@@ -71,9 +71,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_20"
-                    tools:text="Thailand" />
+                    tools:text="Thailand"
+                    android:textStyle="normal"
+                    style="@style/TextViewTitle"/>
 
                 <TextView
                     android:id="@+id/detail_temperament"
@@ -106,9 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/description"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_20"
-                    android:textStyle="bold" />
+                    style="@style/TextViewTitle"/>
 
                 <TextView
                     android:id="@+id/detail_description"
@@ -125,9 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_16"
                     android:text="@string/characteristics"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_20"
-                    android:textStyle="bold" />
+                    style="@style/TextViewTitle"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clAdaptability"
@@ -137,16 +133,13 @@
 
                     <TextView
                         android:id="@+id/tvAdaptability"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/adaptability"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbAdaptability"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbAdaptability"
@@ -168,16 +161,14 @@
 
                     <TextView
                         android:id="@+id/tvAffection"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
                         android:text="@string/affection"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbAffection"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbAffection"
@@ -199,16 +190,13 @@
 
                     <TextView
                         android:id="@+id/tvChild"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/child_friendly"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbChild"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbChild"
@@ -230,16 +218,13 @@
 
                     <TextView
                         android:id="@+id/tvDog"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/dog_friendly"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbDog"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbDog"
@@ -261,16 +246,13 @@
 
                     <TextView
                         android:id="@+id/tvEnergy"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/energy_level"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbEnergy"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbEnergy"
@@ -292,16 +274,13 @@
 
                     <TextView
                         android:id="@+id/yvHealth"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/health_issues"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbHealthIssues"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbHealthIssues"
@@ -323,16 +302,13 @@
 
                     <TextView
                         android:id="@+id/tvIntelligence"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/intelligence"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbIntelligence"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbIntelligence"
@@ -354,16 +330,13 @@
 
                     <TextView
                         android:id="@+id/tvSocial"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/social_needs"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbSocial"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbSocial"
@@ -385,16 +358,13 @@
 
                     <TextView
                         android:id="@+id/tvStrangers"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/strangers_friendly"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbStrangers"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbStrangers"
@@ -416,16 +386,13 @@
 
                     <TextView
                         android:id="@+id/tvVocalisation"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/dimen_0"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_6"
                         android:text="@string/vocalisation"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_18"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/rbVocalisation"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/TextViewTitle.Subtitle"/>
 
                     <RatingBar
                         android:id="@+id/rbVocalisation"

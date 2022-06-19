@@ -8,10 +8,10 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbBreeds"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:background="@color/brown_light"
-        android:elevation="4dp"
+        android:elevation="@dimen/dimen_4"
         android:foregroundTint="#FF5722"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,8 +23,8 @@
         app:titleTextColor="@color/white" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBreeds"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

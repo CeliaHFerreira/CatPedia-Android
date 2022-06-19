@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.4295" />
         <entry key="app/src/main/res/drawable-v24/ic_no_favorite.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/background_almost_rounded.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/background_rounded.xml" value="0.1425" />
@@ -11,13 +12,14 @@
         <entry key="app/src/main/res/drawable/button_rounded.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/button_rounded_border.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/card_description.xml" value="0.268" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.4295" />
         <entry key="app/src/main/res/drawable/navigation_bottom.xml" value="0.1425" />
-        <entry key="app/src/main/res/layout/activity_breed_detail.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_breed_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_breeds.xml" value="0.18385416666666668" />
-        <entry key="app/src/main/res/layout/activity_enrollment.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/activity_enrollment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.3332733154296875" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_breeds.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_breeds.xml" value="0.24112021857923496" />
         <entry key="app/src/main/res/layout/fragment_favorite_list.xml" value="0.2721311475409836" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/image_slider_container.xml" value="0.28229166666666666" />
@@ -25,6 +27,7 @@
         <entry key="app/src/main/res/layout/profile_button.xml" value="0.35556030273437494" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.43020833333333336" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4295" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1425" />
       </map>
     </option>
