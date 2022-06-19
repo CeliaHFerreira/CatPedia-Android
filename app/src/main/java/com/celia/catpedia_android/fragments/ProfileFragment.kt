@@ -1,5 +1,6 @@
 package com.celia.catpedia_android.fragments
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.FragmentProfileBinding
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.profile_button.view.*
 
 
@@ -44,7 +46,9 @@ class ProfileFragment : Fragment() {
             }
         }
         val preferences = this.requireActivity().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        binding.tvEmail.text = preferences.getString("email", "email")
+        val notificationEnabled: Boolean = preferences.getBoolean("notificationEnabled", false)
+        setNotificationText(notificationEnabled)
+        binding.tvEmail.text = preferences.getString("email", getString(R.string.your_email))
         setButtonNotification()
         setDarkMode()
         deleteDataBase()
@@ -52,27 +56,27 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun setButtonNotification() {
+    private fun setButtonNotification() {
+        val preferences = this.requireActivity().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val preferencesToEdit = preferences.edit()
         binding.btNotification.tvBtnProfileButton.setOnClickListener {
-            binding.btNotification.tvBtnProfileButton.text = getString(R.string.on)
-            val notification = NotificationCompat.Builder(requireContext(), "chanel")
-                .setSmallIcon(R.drawable.ic_favorite)
-                .setContentTitle("Primera prueba")
-                .setContentText("hola")
-                .build()
-
-            val manager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            manager.notify(1, notification)
-
-            //create notification
-            val notificationChannel = NotificationChannel("chanel", "chanel", NotificationManager.IMPORTANCE_HIGH)
-            manager.createNotificationChannel(notificationChannel)
-
+            val notificationEnabled: Boolean = preferences.getBoolean("notificationEnabled", false)
+            it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
+            if (notificationEnabled) {
+                preferencesToEdit.putBoolean("notificationEnabled", false)
+                preferencesToEdit.apply()
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("catpedia")
+            }
+            else {
+                preferencesToEdit.putBoolean("notificationEnabled", true)
+                preferencesToEdit.apply()
+                FirebaseMessaging.getInstance().subscribeToTopic("catpedia")
+            }
+            setNotificationText(!notificationEnabled)
         }
     }
 
-    fun setDarkMode() {
+    private fun setDarkMode() {
         //change darkMode to true
         val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         binding.btEdit.tvBtnProfileButton.setOnClickListener {
@@ -88,7 +92,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    fun deleteDataBase() {
+    private fun deleteDataBase() {
         //clear all elements of the database
         binding.btFavorite.tvBtnProfileButton.setOnClickListener {
             //add haptic feedback
@@ -98,10 +102,19 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    fun selectLogOut() {
+    private fun selectLogOut() {
         binding.btLogOut.tvBtnProfileButton.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             requireActivity().finish()
+        }
+    }
+
+    private fun setNotificationText(notificationEnabled: Boolean) {
+        if (notificationEnabled) {
+            binding.btNotification.tvBtnProfileButton.text = getString(R.string.notification_on)
+        }
+        else {
+            binding.btNotification.tvBtnProfileButton.text = getString(R.string.notification_off)
         }
     }
 }
