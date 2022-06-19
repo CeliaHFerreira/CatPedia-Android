@@ -43,7 +43,7 @@
                         android:layout_marginStart="110dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="12dp"
-                        android:text="User"
+                        android:text="@string/welcome"
                         android:textSize="40sp"
                         android:textStyle="bold"
                         android:textColor="@color/grey_dark_text"
@@ -57,13 +57,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="110dp"
                         android:layout_marginBottom="6dp"
-                        android:text="User@user.com"
                         android:textSize="20sp"
-
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvName" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView

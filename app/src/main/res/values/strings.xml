@@ -40,4 +40,5 @@
     <string name="a_z">A…Z</string>
     <string name="z_a">Z…A</string>
     <string name="dark_light">Change dark/light mode</string>
+    <string name="welcome">Welcome</string>
 </resources>

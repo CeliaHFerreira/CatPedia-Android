@@ -19,6 +19,7 @@ import com.celia.catpedia_android.databinding.FragmentProfileBinding
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
 import kotlinx.android.synthetic.main.profile_button.view.*
 
+
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     companion object {
@@ -42,6 +43,8 @@ class ProfileFragment : Fragment() {
                 binding.btEdit.tvBtnProfileButton.text = getString(R.string.light_mode)
             }
         }
+        val preferences = this.requireActivity().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        binding.tvEmail.text = preferences.getString("email", "email")
         setButtonNotification()
         setDarkMode()
         deleteDataBase()
