@@ -18,7 +18,6 @@ import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.persistence.AppBreedsDataBase
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
-import com.celia.catpedia_android.viewmodels.BreedListViewModel
 import kotlinx.android.synthetic.main.fragment_breeds.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,7 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class BreedsFragment : Fragment() {
 
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
-    private lateinit var viewModel: BreedListViewModel
 
     private lateinit var binding: FragmentBreedsBinding
     private var breedList = mutableListOf<Breed>()
@@ -182,9 +180,7 @@ class BreedsFragment : Fragment() {
         val favoritesBreeds = favoritesDataBase.getFavorites()
         favoritesBreeds.forEach { favoriteBreed ->
             breed.forEach { breed ->
-                if (breed.id == favoriteBreed.id) {
-                    breed.favorite = true
-                }
+                breed.favorite = breed.id == favoriteBreed.id
             }
         }
         return breed
@@ -192,10 +188,10 @@ class BreedsFragment : Fragment() {
 
     private fun getFilterbreeds(nameSearched: String, breedList: List<Breed>): List<Breed> {
 
-        if (nameSearched.isEmpty()) {
-            return breedList
+        return if (nameSearched.isEmpty()) {
+            breedList
         } else {
-            return breedList.filter { breed ->
+            breedList.filter { breed ->
                 breed.name.lowercase().contains(nameSearched)
             }
         }

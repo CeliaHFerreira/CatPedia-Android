@@ -1,5 +1,6 @@
 package com.celia.catpedia_android.fragments
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
@@ -50,6 +51,13 @@ class FavoritesFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.Main) {
             val breeds = retrieveFavoritesBreeds()
             favoriteList.addAll(breeds)
+            val prefs = activity?.getSharedPreferences("favorites", Context.MODE_PRIVATE)
+            val sorting = prefs?.getBoolean("ascending", true)!!
+            if (sorting) {
+                favoriteList.sortBy{ it.name }
+            } else {
+                favoriteList.sortByDescending{ it.name }
+            }
             binding.rvBreeds.visibility = View.VISIBLE
             binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
             binding.rvBreeds.adapter = FavoritesAdapter(favoriteList)
@@ -67,17 +75,14 @@ class FavoritesFragment : Fragment() {
                 sortAscending()
                 true
             }
-
             R.id.tbZA -> {
                 sortDescending()
                 true
             }
-
             R.id.tbChange -> {
                 setDarkMode()
                 true
             }
-
             else -> {
                 false
             }
@@ -88,12 +93,14 @@ class FavoritesFragment : Fragment() {
         favoriteList.sortBy{ it.name }
         binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
         binding.rvBreeds.adapter = FavoritesAdapter(favoriteList)
+        updatePreferences(true)
     }
 
     private fun sortDescending() {
         favoriteList.sortByDescending{ it.name }
         binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
         binding.rvBreeds.adapter = FavoritesAdapter(favoriteList)
+        updatePreferences(false)
     }
 
     fun setDarkMode() {
@@ -104,5 +111,11 @@ class FavoritesFragment : Fragment() {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
+    }
+
+    private fun updatePreferences(ascending: Boolean) {
+        val prefs = activity?.getSharedPreferences("favorites", Context.MODE_PRIVATE)?.edit()
+        prefs?.putBoolean("ascending", ascending)
+        prefs?.apply()
     }
 }

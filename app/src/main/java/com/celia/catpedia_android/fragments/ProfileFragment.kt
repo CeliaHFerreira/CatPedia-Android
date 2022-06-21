@@ -17,6 +17,7 @@ import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.FragmentProfileBinding
+import com.celia.catpedia_android.persistence.AppBreedsDataBase
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.profile_button.view.*
@@ -98,6 +99,11 @@ class ProfileFragment : Fragment() {
             //add haptic feedback
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             val favoritesDataBase = AppFavoritesDataBase.getAppDatabase(requireContext()).favoritesDao()
+            val database = AppBreedsDataBase.getAppDatabase(requireContext()).breedDao()
+            val breeds = database.getAll()
+            breeds.forEach { breed ->
+                breed.favorite = false
+            }
             favoritesDataBase.deleteAllFavorites()
         }
     }
