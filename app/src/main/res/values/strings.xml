@@ -44,4 +44,6 @@
     <string name="your_email">Your email here</string>
     <string name="notification_on">Enabled</string>
     <string name="notification_off">Disabled</string>
+    <string name="login_error">The user does not exist</string>
+    <string name="generic_error">An error has occurred</string>
 </resources>

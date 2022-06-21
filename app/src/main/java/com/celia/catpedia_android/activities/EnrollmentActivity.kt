@@ -3,7 +3,7 @@ package com.celia.catpedia_android.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import com.celia.catpedia_android.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_enrollment.*
@@ -12,8 +12,6 @@ class EnrollmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enrollment)
-
-
         setup()
     }
 
@@ -38,12 +36,7 @@ class EnrollmentActivity : AppCompatActivity() {
     }
 
     private fun showAlert() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error")
-        builder.setMessage("se ha producido un error en el registro")
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
+        Toast.makeText(baseContext, R.string.generic_error, Toast.LENGTH_LONG).show()
     }
 
     private fun showHome() {

@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
 import com.celia.catpedia_android.APIService
 import com.celia.catpedia_android.BuildConfig
+import com.celia.catpedia_android.R
 import com.celia.catpedia_android.adapters.ImageDetailAdapter
 import com.celia.catpedia_android.databinding.ActivityBreedDetailBinding
 import com.celia.catpedia_android.models.Breed
@@ -31,7 +32,6 @@ class BreedDetailActivity : AppCompatActivity() {
         binding.scrollView2.visibility = View.GONE
         shortAnimationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
         lifecycleScope.launch(Dispatchers.Main) {
-
             val breedDetail = getBreedDetail(args.breedId)
             val breed = breedDetail[0].breeds[0]
             selectImages(breedDetail)
@@ -111,9 +111,7 @@ class BreedDetailActivity : AppCompatActivity() {
         rbVocalisation.rating = breed.vocalisation.toFloat()
     }
 
-    //Change all
     private fun showError() {
-        Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT)
-            .show()
+        Toast.makeText(this, R.string.generic_error, Toast.LENGTH_SHORT).show()
     }
 }

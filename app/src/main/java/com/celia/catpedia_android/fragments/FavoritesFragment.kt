@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.celia.catpedia_android.R
-import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.adapters.FavoritesAdapter
 import com.celia.catpedia_android.databinding.FragmentFavoriteListBinding
 import com.celia.catpedia_android.models.Breed

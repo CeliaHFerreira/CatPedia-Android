@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.celia.catpedia_android.APIService
 import com.celia.catpedia_android.BuildConfig
+import com.celia.catpedia_android.R
 import com.celia.catpedia_android.adapters.BreedsAdapter
 import com.celia.catpedia_android.databinding.FragmentBreedsBinding
 import com.celia.catpedia_android.models.Breed
@@ -147,10 +148,8 @@ class BreedsFragment : Fragment() {
         return breeds
     }
 
-    //Change all
     private fun showError() {
-        Toast.makeText(activity, "Ha ocurrido un error", Toast.LENGTH_SHORT)
-            .show()
+        Toast.makeText(activity, R.string.generic_error, Toast.LENGTH_SHORT).show()
     }
 
     private fun saveBreedsDataBase(breeds: List<Breed>) {
