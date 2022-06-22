@@ -22,11 +22,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(hBinding.root)
 
         val bundle = intent.extras
-        val email = bundle?.getString("email")
+        val email = bundle?.getString(getString(R.string.email_string))
 
         val preferences =
             getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-        preferences.putString("email", email)
+        preferences.putString(getString(R.string.email_string), email)
         preferences.apply()
 
         hBinding.navigation.setOnItemSelectedListener {

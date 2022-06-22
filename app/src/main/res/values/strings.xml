@@ -48,4 +48,19 @@
     <string name="generic_error">An error has occurred</string>
     <string name="empty_favorites">Add any cat breed</string>
     <string name="add">Add</string>
+    <string name="email_string">email</string>
+    <string name="message">message</string>
+    <string name="init_app">Init app</string>
+    <string name="init_screen">InitScreen</string>
+    <string name="permission_granted">Permission already granted</string>
+    <string name="sms_granted">Sms Permission Granted</string>
+    <string name="sms_denied">Sms Permission Denied</string>
+    <string name="visual">visual</string>
+    <string name="dark_visual">darkmode</string>
+    <string name="breedId">breedId</string>
+    <string name="breeds">breeds</string>
+    <string name="favorites_string">favorites</string>
+    <string name="sort">ascending</string>
+    <string name="notification_enabled">notificationEnabled</string>
+    <string name="catpedia">catpedia</string>
 </resources>

@@ -35,14 +35,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         //Firebase analytics
-        var firebaseAnalytics = Firebase.analytics
+        val firebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
-        bundle.putString("message", "App iniciada")
-        firebaseAnalytics.logEvent("InitScreen", bundle)
+        bundle.putString(getString(R.string.message), getString(R.string.init_app))
+        firebaseAnalytics.logEvent(getString(R.string.init_screen), bundle)
 
         //Home setup
         setup()
-
         session()
     }
 
@@ -54,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun session() {
         val preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        val email = preferences.getString("email", null)
+        val email = preferences.getString(getString(R.string.email_string), null)
 
         if (email != null) {
             loginLayout.visibility = View.INVISIBLE
@@ -103,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showHome(email: String) {
         val homeIntent = Intent(this, HomeActivity::class.java).apply {
-            putExtra("email", email)
+            putExtra(getString(R.string.email_string), email)
         }
         startActivity(homeIntent)
     }
@@ -139,7 +138,7 @@ class LoginActivity : AppCompatActivity() {
             // Requesting the permission
             ActivityCompat.requestPermissions(this@LoginActivity, arrayOf(permission), requestCode)
         } else {
-            Toast.makeText(this@LoginActivity, "Permission already granted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@LoginActivity, getString(R.string.permission_granted), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -149,30 +148,29 @@ class LoginActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == SMS_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this@LoginActivity, "Sms Permission Granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.sms_granted), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@LoginActivity, "Sms Permission Denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.sms_denied), Toast.LENGTH_SHORT).show()
             }
         } else if (requestCode == SMS_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this@LoginActivity, "Sms Permission Granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.sms_granted), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@LoginActivity, "Sms Permission Denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.sms_denied), Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun setMode() {
-        val prefs = getSharedPreferences("visual", Context.MODE_PRIVATE)
+        val prefs = getSharedPreferences(getString(R.string.visual), Context.MODE_PRIVATE)
         val prefsToEdit = prefs?.edit()
-        val darkmode = prefs.getBoolean("darkmode", false)
-        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        if (darkmode || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+        val darkmode = prefs.getBoolean(getString(R.string.dark_visual), false)
+        if (darkmode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            prefsToEdit?.putBoolean("darkmode", true)
+            prefsToEdit?.putBoolean(getString(R.string.dark_visual), true)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            prefsToEdit?.putBoolean("darkmode", false)
+            prefsToEdit?.putBoolean(getString(R.string.dark_visual), false)
         }
         prefsToEdit?.apply()
     }

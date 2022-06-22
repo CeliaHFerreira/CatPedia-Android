@@ -123,7 +123,7 @@ class BreedsFragment : Fragment() {
 
     private suspend fun getBreeds(): List<Breed> {
         var breeds: List<Breed>
-        val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE)
+        val prefs = activity?.getSharedPreferences(getString(R.string.breeds), MODE_PRIVATE)
         countNumberOfDataCall = if (BuildConfig.DEBUG) 0 else prefs?.getInt(
             "breeds",
             0
@@ -167,9 +167,9 @@ class BreedsFragment : Fragment() {
     }
 
     private fun updateCountSharedPreferences() {
-        val prefs = activity?.getSharedPreferences("breeds", MODE_PRIVATE) ?: return
+        val prefs = activity?.getSharedPreferences(getString(R.string.breeds), MODE_PRIVATE) ?: return
         with(prefs.edit()) {
-            putInt("breeds", countNumberOfDataCall)
+            putInt(getString(R.string.breeds), countNumberOfDataCall)
             apply()
         }
     }

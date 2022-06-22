@@ -71,7 +71,7 @@ class FavoritesAdapter(private val breeds: MutableList<Breed>) :
             view: View
         ) {
             val intent = Intent(this, BreedDetailActivity::class.java)
-            intent.putExtra("breedId", breed.id)
+            intent.putExtra(getString(R.string.breedId), breed.id)
             startActivity(intent)
         }
 

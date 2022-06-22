@@ -56,8 +56,8 @@ class FavoritesFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.Main) {
             val breeds = retrieveFavoritesBreeds()
             favoriteList.addAll(breeds)
-            val prefs = activity?.getSharedPreferences("favorites", Context.MODE_PRIVATE)
-            val sorting = prefs?.getBoolean("ascending", true)!!
+            val prefs = activity?.getSharedPreferences(getString(R.string.favorites_string), Context.MODE_PRIVATE)
+            val sorting = prefs?.getBoolean(getString(R.string.sort), true)!!
             if (sorting) {
                 favoriteList.sortBy{ it.name }
             } else {
@@ -115,22 +115,22 @@ class FavoritesFragment : Fragment() {
 
     private fun setDarkMode() {
     //change darkMode to true
-    val prefs = activity?.getSharedPreferences("visual", Context.MODE_PRIVATE)?.edit()
+    val prefs = activity?.getSharedPreferences(getString(R.string.visual), Context.MODE_PRIVATE)?.edit()
     val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() ||
             nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            prefs?.putBoolean("darkmode", false)
+            prefs?.putBoolean(getString(R.string.dark_visual), false)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            prefs?.putBoolean("darkmode", true)
+            prefs?.putBoolean(getString(R.string.dark_visual), true)
         }
         prefs?.apply()
     }
 
     private fun updatePreferences(ascending: Boolean) {
-        val prefs = activity?.getSharedPreferences("favorites", Context.MODE_PRIVATE)?.edit()
-        prefs?.putBoolean("ascending", ascending)
+        val prefs = activity?.getSharedPreferences(getString(R.string.favorites_string), Context.MODE_PRIVATE)?.edit()
+        prefs?.putBoolean(getString(R.string.sort), ascending)
         prefs?.apply()
     }
 

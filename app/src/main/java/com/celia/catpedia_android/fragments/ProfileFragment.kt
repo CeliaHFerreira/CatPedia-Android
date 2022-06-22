@@ -44,9 +44,9 @@ class ProfileFragment : Fragment() {
             }
         }
         val preferences = this.requireActivity().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        val notificationEnabled: Boolean = preferences.getBoolean("notificationEnabled", false)
+        val notificationEnabled: Boolean = preferences.getBoolean(getString(R.string.notification_enabled), false)
         setNotificationText(notificationEnabled)
-        binding.tvEmail.text = preferences.getString("email", getString(R.string.your_email))
+        binding.tvEmail.text = preferences.getString(getString(R.string.email_string), getString(R.string.your_email))
         setButtonNotification()
         setDarkMode()
         deleteDataBase()
@@ -58,17 +58,17 @@ class ProfileFragment : Fragment() {
         val preferences = this.requireActivity().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
         val preferencesToEdit = preferences.edit()
         binding.btNotification.tvBtnProfileButton.setOnClickListener {
-            val notificationEnabled: Boolean = preferences.getBoolean("notificationEnabled", false)
+            val notificationEnabled: Boolean = preferences.getBoolean(getString(R.string.notification_enabled), false)
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             if (notificationEnabled) {
-                preferencesToEdit.putBoolean("notificationEnabled", false)
+                preferencesToEdit.putBoolean(getString(R.string.notification_enabled), false)
                 preferencesToEdit.apply()
-                FirebaseMessaging.getInstance().unsubscribeFromTopic("catpedia")
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(getString(R.string.catpedia))
             }
             else {
-                preferencesToEdit.putBoolean("notificationEnabled", true)
+                preferencesToEdit.putBoolean(getString(R.string.notification_enabled), true)
                 preferencesToEdit.apply()
-                FirebaseMessaging.getInstance().subscribeToTopic("catpedia")
+                FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.catpedia))
             }
             setNotificationText(!notificationEnabled)
         }
@@ -76,19 +76,19 @@ class ProfileFragment : Fragment() {
 
     private fun setDarkMode() {
         //change darkMode to true
-        val prefs = activity?.getSharedPreferences("visual", Context.MODE_PRIVATE)?.edit()
+        val prefs = activity?.getSharedPreferences(getString(R.string.visual), Context.MODE_PRIVATE)?.edit()
         val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         binding.btEdit.tvBtnProfileButton.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                 binding.btEdit.tvBtnProfileButton.text = getString(R.string.dark_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                prefs?.putBoolean("darkmode", false)
+                prefs?.putBoolean(getString(R.string.dark_visual), false)
             } else {
                 binding.btEdit.tvBtnProfileButton.text = getString(R.string.light_mode)
                 it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                prefs?.putBoolean("darkmode", true)
+                prefs?.putBoolean(getString(R.string.dark_visual), true)
             }
             prefs?.apply()
         }
