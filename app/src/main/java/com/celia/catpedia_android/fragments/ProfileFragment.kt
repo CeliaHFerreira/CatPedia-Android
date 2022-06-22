@@ -1,8 +1,5 @@
 package com.celia.catpedia_android.fragments
 
-import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
@@ -13,12 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.databinding.FragmentProfileBinding
 import com.celia.catpedia_android.persistence.AppBreedsDataBase
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.profile_button.view.*
 
@@ -79,17 +76,21 @@ class ProfileFragment : Fragment() {
 
     private fun setDarkMode() {
         //change darkMode to true
+        val prefs = activity?.getSharedPreferences("visual", Context.MODE_PRIVATE)?.edit()
         val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         binding.btEdit.tvBtnProfileButton.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
             if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                 binding.btEdit.tvBtnProfileButton.text = getString(R.string.dark_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                prefs?.putBoolean("darkmode", false)
             } else {
                 binding.btEdit.tvBtnProfileButton.text = getString(R.string.light_mode)
                 it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                prefs?.putBoolean("darkmode", true)
             }
+            prefs?.apply()
         }
     }
 
@@ -111,6 +112,7 @@ class ProfileFragment : Fragment() {
     private fun selectLogOut() {
         binding.btLogOut.tvBtnProfileButton.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
+            FirebaseAuth.getInstance().signOut()
             requireActivity().finish()
         }
     }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.celia.catpedia_android.R
@@ -13,8 +14,11 @@ import com.celia.catpedia_android.adapters.FavoritesAdapter
 import com.celia.catpedia_android.databinding.FragmentFavoriteListBinding
 import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.profile_button.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 class FavoritesFragment : Fragment() {
 
@@ -33,6 +37,8 @@ class FavoritesFragment : Fragment() {
     ): View? {
         binding = FragmentFavoriteListBinding.inflate(inflater, container, false)
         binding.rvBreeds.visibility = View.GONE
+        binding.emptyList.visibility = View.VISIBLE
+        addFavorites()
         return binding.root
     }
 
@@ -60,6 +66,11 @@ class FavoritesFragment : Fragment() {
             binding.rvBreeds.visibility = View.VISIBLE
             binding.rvBreeds.layoutManager = LinearLayoutManager(activity)
             binding.rvBreeds.adapter = FavoritesAdapter(favoriteList)
+            if (favoriteList.isEmpty()) {
+                binding.emptyList.visibility = View.VISIBLE
+            } else {
+                binding.emptyList.visibility = View.GONE
+            }
         }
     }
 
@@ -102,19 +113,38 @@ class FavoritesFragment : Fragment() {
         updatePreferences(false)
     }
 
-    fun setDarkMode() {
+    private fun setDarkMode() {
     //change darkMode to true
+    val prefs = activity?.getSharedPreferences("visual", Context.MODE_PRIVATE)?.edit()
     val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+        if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode() ||
+            nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            prefs?.putBoolean("darkmode", false)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            prefs?.putBoolean("darkmode", true)
         }
+        prefs?.apply()
     }
 
     private fun updatePreferences(ascending: Boolean) {
         val prefs = activity?.getSharedPreferences("favorites", Context.MODE_PRIVATE)?.edit()
         prefs?.putBoolean("ascending", ascending)
         prefs?.apply()
+    }
+
+    private fun addFavorites() {
+        binding.emptyList.tvBtnProfileButton.setOnClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING)
+            val ft = activity?.supportFragmentManager?.beginTransaction()
+            if (ft != null) {
+                ft.replace(R.id.nav_host_fragment_container, BreedsFragment.newInstance())
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                ft.commit()
+                val mBottomNavigationView = activity?.findViewById(R.id.navigation) as BottomNavigationView
+                mBottomNavigationView.menu.findItem(R.id.navigation_home).isChecked = true
+            }
+        }
     }
 }

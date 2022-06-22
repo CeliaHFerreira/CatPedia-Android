@@ -3,11 +3,12 @@ package com.celia.catpedia_android.activities
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.celia.catpedia_android.R
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.profile_button.view.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -47,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         loginLayout.visibility = View.VISIBLE
+        setMode()
     }
 
     private fun session() {
@@ -157,5 +160,20 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "Sms Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun setMode() {
+        val prefs = getSharedPreferences("visual", Context.MODE_PRIVATE)
+        val prefsToEdit = prefs?.edit()
+        val darkmode = prefs.getBoolean("darkmode", false)
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (darkmode || nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            prefsToEdit?.putBoolean("darkmode", true)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            prefsToEdit?.putBoolean("darkmode", false)
+        }
+        prefsToEdit?.apply()
     }
 }

@@ -15,7 +15,7 @@
             android:name=".activities.Notification"
             android:enabled="true"/>
         <activity android:name=".activities.BreedDetailActivity" />
-        <activity android:name=".activities.EnrollmentActivity" />
+        <activity android:name=".activities.EnrollmentActivity"/>
         <activity android:name=".activities.HomeActivity" />
         <activity
             android:name=".activities.LoginActivity"

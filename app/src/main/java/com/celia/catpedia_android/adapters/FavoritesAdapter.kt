@@ -5,17 +5,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.celia.catpedia_android.R
 import com.celia.catpedia_android.activities.BreedDetailActivity
 import com.celia.catpedia_android.databinding.ItemBreedBinding
-import com.celia.catpedia_android.fragments.BreedsFragmentDirections
-import com.celia.catpedia_android.fragments.FavoritesFragment
-import com.celia.catpedia_android.fragments.FavoritesFragmentDirections
 import com.celia.catpedia_android.models.Breed
 import com.celia.catpedia_android.persistence.AppFavoritesDataBase
 import com.squareup.picasso.Picasso

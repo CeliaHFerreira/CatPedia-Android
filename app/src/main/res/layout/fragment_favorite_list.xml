@@ -31,6 +31,20 @@
         app:layout_constraintTop_toBottomOf="@+id/tbBreeds"
         tools:listitem="@layout/item_breed" />
 
+    <com.celia.catpedia_android.customviews.ProfileButton
+        android:id="@+id/emptyList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:profilebutton_image="@drawable/cat_love"
+        app:profilebutton_text="@string/empty_favorites"
+        app:profilebutton_btn="@string/add"
+        app:profilebutton_background="@drawable/button_rounded"
+        app:profilebutton_textcolor="@color/white"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

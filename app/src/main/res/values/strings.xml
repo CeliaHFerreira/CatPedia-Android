@@ -46,4 +46,6 @@
     <string name="notification_off">Disabled</string>
     <string name="login_error">The user does not exist</string>
     <string name="generic_error">An error has occurred</string>
+    <string name="empty_favorites">Add any cat breed</string>
+    <string name="add">Add</string>
 </resources>
