@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private val GOOGLE_SIGN_IN = 200
 
     companion object {
-        private const val SMS_PERMISSION_CODE = 101
+        private const val CAMERA_PERMISSION_CODE = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setup() {
         signInButton.setOnClickListener {
             showEnrollment()
-            checkPermission(android.Manifest.permission.READ_SMS , SMS_PERMISSION_CODE)
+            checkPermission(android.Manifest.permission.CAMERA , CAMERA_PERMISSION_CODE)
         }
         loginButton.setOnClickListener {
             if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
@@ -148,17 +148,17 @@ class LoginActivity : AppCompatActivity() {
                                             permissions: Array<String>,
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == SMS_PERMISSION_CODE) {
+        if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this@LoginActivity, getString(R.string.sms_granted), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.camera_granted), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@LoginActivity, getString(R.string.sms_denied), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.camera_denied), Toast.LENGTH_SHORT).show()
             }
-        } else if (requestCode == SMS_PERMISSION_CODE) {
+        } else if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this@LoginActivity, getString(R.string.sms_granted), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.camera_granted), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@LoginActivity, getString(R.string.sms_denied), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getString(R.string.camera_denied), Toast.LENGTH_SHORT).show()
             }
         }
     }

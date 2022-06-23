@@ -53,8 +53,8 @@
     <string name="init_app">Init app</string>
     <string name="init_screen">InitScreen</string>
     <string name="permission_granted">Permission already granted</string>
-    <string name="sms_granted">Sms Permission Granted</string>
-    <string name="sms_denied">Sms Permission Denied</string>
+    <string name="camera_granted">Camera Permission Granted</string>
+    <string name="camera_denied">Camera Permission Denied</string>
     <string name="visual">visual</string>
     <string name="dark_visual">darkmode</string>
     <string name="breedId">breedId</string>
