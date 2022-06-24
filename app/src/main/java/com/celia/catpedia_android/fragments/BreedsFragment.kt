@@ -49,17 +49,21 @@ class BreedsFragment : Fragment() {
         binding.svBreeds.visibility = View.GONE
         binding.srBreeds.visibility = View.GONE
         setupSearchView()
+        refreshFragment()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         swipeRefreshLayout = srBreeds
-        swipeRefreshLayout?.setOnRefreshListener {
+        setData()
+    }
+
+    private fun refreshFragment() {
+        binding.srBreeds.setOnRefreshListener {
             binding.svBreeds.setQuery("", true)
             setData()
         }
-        setData()
     }
 
     private fun setupSearchView() {
